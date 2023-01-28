@@ -45,7 +45,9 @@ type Method struct {
 	// Inputs is a mapping of input name to type
 	Inputs []Arg
 	// Outputs is a slice of types
-	Outputs []string
+	Outputs []Arg
+	// Pager indicates the method takes a user supplied paging function
+	Pager bool
 }
 
 func (m Method) FindInputType() (string, bool) {
@@ -59,8 +61,8 @@ func (m Method) FindInputType() (string, bool) {
 
 func (m Method) FindOutputType() (string, bool) {
 	for _, output := range m.Outputs {
-		if strings.HasSuffix(output, "Output") {
-			return output, true
+		if strings.HasSuffix(output.Type, "Output") {
+			return output.Type, true
 		}
 	}
 	return "", false
@@ -78,12 +80,15 @@ func (m Method) CallString() string {
 
 func (m Method) String() string {
 	inputs := lo.Map(m.Inputs, func(a Arg, _ int) string { return a.String() })
-	return fmt.Sprintf("%s(%s) (%s)", m.Name, strings.Join(inputs, ", "), strings.Join(m.Outputs, ", "))
+	outputs := lo.Map(m.Outputs, func(a Arg, _ int) string { return a.Type })
+	return fmt.Sprintf("%s(%s) (%s)", m.Name, strings.Join(inputs, ", "), strings.Join(outputs, ", "))
 }
 
 type Arg struct {
-	Name string
-	Type string
+	Name       string
+	Type       string
+	Kind       reflect.Kind
+	ActualType reflect.Type
 }
 
 func (a Arg) String() string {
@@ -93,13 +98,17 @@ func (a Arg) String() string {
 func main() {
 	src := &bytes.Buffer{}
 	fmt.Fprintln(src, header)
-	fmt.Fprintln(src, "package imds")
+	fmt.Fprintln(src, "package cacher")
 	fmt.Fprintln(src, "// DO NOT EDIT")
 	fmt.Fprintln(src, "// THIS FILE IS AUTO GENERATED")
 	fmt.Fprintln(src, `import (
 		"context"
-		"fmt"
 		"strconv"
+
+		"github.com/aws/aws-sdk-go/service/ec2"
+		"github.com/aws/aws-sdk-go/aws/request"
+		"github.com/imdario/mergo"
+		"github.com/mitchellh/hashstructure/v2"
 		)`)
 
 	t := reflect.TypeOf((*ec2iface.EC2API)(nil)).Elem()
@@ -108,6 +117,10 @@ func main() {
 		if _, ok := method.FindOutputType(); ok && !strings.HasSuffix(method.Name, "Request") {
 			fmt.Fprintf(src, "func (c *Client) %s {\n", method.String())
 			fmt.Fprintln(src, cachableFuncBody(method))
+			fmt.Fprintln(src, "}")
+		} else if method.Pager {
+			fmt.Fprintf(src, "func (c *Client) %s {\n", method.String())
+			fmt.Fprintln(src, cachablePagerFuncBody(method))
 			fmt.Fprintln(src, "}")
 		}
 
@@ -126,16 +139,43 @@ func main() {
 }
 
 func cachableFuncBody(m Method) string {
-	src := &bytes.Buffer{}
-	fmt.Fprintln(src, `hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})`)
-	fmt.Fprintln(src, "if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {")
-	fmt.Fprintf(src, "   return cachedOutput.(%s), nil\n", m.Outputs[0])
-	fmt.Fprintln(src, "}")
-	fmt.Fprintf(src, "out, err := c.client.%s\n", m.CallString())
-	fmt.Fprintln(src, "if err != nil { return nil, err }")
-	fmt.Fprintln(src, "cache.SetWithDefault(out)")
-	fmt.Fprintln(src, "return out, err")
-	return src.String()
+	return fmt.Sprintf(`hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
+	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
+		return cachedOutput.(%s), nil
+	}
+	out, err := c.client.%s
+	if err != nil { return nil, err }
+	c.cache.SetDefault(strconv.FormatUint(hash, 16), out)
+	return out, err`, m.Outputs[0], m.CallString())
+}
+
+func cachablePagerFuncBody(m Method) string {
+	output := m.Inputs[1].ActualType.In(0).String()
+	return fmt.Sprintf(`hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
+	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
+		fn(cachedOutput.(%s), false)
+		return nil
+	}
+	cachable := true
+	output := &%s{}
+	fnCacher := func(out %s, more bool) bool {
+		ret := fn(out, more)
+		if !ret {
+			cachable = false
+			return false
+		} 
+		if err := mergo.Merge(output, out); err != nil {
+			cachable = false
+		}
+		return true
+	}
+	if err := c.client.%s; err != nil {
+		return err
+	}
+	if cachable {
+		c.cache.SetDefault(strconv.FormatUint(hash, 16), output)
+	}
+	return nil`, output, strings.Replace(output, "*", "", 1), output, strings.Replace(m.CallString(), ", fn", ", fnCacher", 1))
 }
 
 func DescribeMethod(method reflect.Method) Method {
@@ -146,23 +186,24 @@ func DescribeMethod(method reflect.Method) Method {
 		withCtx = true
 	}
 	if strings.HasSuffix(method.Name, "Pages") {
+		m.Pager = true
 		pages = true
 	}
 
 	for j := 0; j < method.Type.NumIn(); j++ {
 		if withCtx && j == 0 {
-			m.Inputs = append(m.Inputs, Arg{Name: "ctx", Type: method.Type.In(j).String()})
-		} else if pages && j == method.Type.NumIn()-2 {
-			m.Inputs = append(m.Inputs, Arg{Name: "fn", Type: method.Type.In(j).String()})
+			m.Inputs = append(m.Inputs, Arg{Name: "ctx", Type: method.Type.In(j).String(), Kind: method.Type.In(j).Kind()})
+		} else if pages && j == method.Type.NumIn()-1 {
+			m.Inputs = append(m.Inputs, Arg{Name: "fn", Type: method.Type.In(j).String(), Kind: method.Type.In(j).Kind(), ActualType: method.Type.In(j)})
 		} else if method.Type.IsVariadic() && j == method.Type.NumIn()-1 {
-			m.Inputs = append(m.Inputs, Arg{Name: "opts", Type: strings.Replace(method.Type.In(j).String(), "[]", "...", 1)})
+			m.Inputs = append(m.Inputs, Arg{Name: "opts", Type: strings.Replace(method.Type.In(j).String(), "[]", "...", 1), Kind: method.Type.In(j).Kind()})
 		} else {
-			m.Inputs = append(m.Inputs, Arg{Name: "input", Type: method.Type.In(j).String()})
+			m.Inputs = append(m.Inputs, Arg{Name: "input", Type: method.Type.In(j).String(), Kind: method.Type.In(j).Kind()})
 		}
 	}
 
 	for j := 0; j < method.Type.NumOut(); j++ {
-		m.Outputs = append(m.Outputs, method.Type.Out(j).String())
+		m.Outputs = append(m.Outputs, Arg{Type: method.Type.Out(j).String(), Kind: method.Type.Out(j).Kind()})
 	}
 	return m
 }

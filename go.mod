@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/aws/aws-sdk-go v1.44.184
+	github.com/imdario/mergo v0.3.13
 	github.com/mitchellh/hashstructure/v2 v2.0.2
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/samber/lo v1.37.0
