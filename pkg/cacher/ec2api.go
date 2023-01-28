@@ -5039,7 +5039,7 @@ func (c *Client) DescribeAddressTransfersPages(input *ec2.DescribeAddressTransfe
 	output := &ec2.DescribeAddressTransfersOutput{}
 	fnCacher := func(out *ec2.DescribeAddressTransfersOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5102,7 +5102,7 @@ func (c *Client) DescribeAddressesAttributePages(input *ec2.DescribeAddressesAtt
 	output := &ec2.DescribeAddressesAttributeOutput{}
 	fnCacher := func(out *ec2.DescribeAddressesAttributeOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5213,7 +5213,7 @@ func (c *Client) DescribeAwsNetworkPerformanceMetricSubscriptionsPages(input *ec
 	output := &ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput{}
 	fnCacher := func(out *ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5288,7 +5288,7 @@ func (c *Client) DescribeByoipCidrsPages(input *ec2.DescribeByoipCidrsInput, fn 
 	output := &ec2.DescribeByoipCidrsOutput{}
 	fnCacher := func(out *ec2.DescribeByoipCidrsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5339,7 +5339,7 @@ func (c *Client) DescribeCapacityReservationFleetsPages(input *ec2.DescribeCapac
 	output := &ec2.DescribeCapacityReservationFleetsOutput{}
 	fnCacher := func(out *ec2.DescribeCapacityReservationFleetsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5390,7 +5390,7 @@ func (c *Client) DescribeCapacityReservationsPages(input *ec2.DescribeCapacityRe
 	output := &ec2.DescribeCapacityReservationsOutput{}
 	fnCacher := func(out *ec2.DescribeCapacityReservationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5441,7 +5441,7 @@ func (c *Client) DescribeCarrierGatewaysPages(input *ec2.DescribeCarrierGateways
 	output := &ec2.DescribeCarrierGatewaysOutput{}
 	fnCacher := func(out *ec2.DescribeCarrierGatewaysOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5492,7 +5492,7 @@ func (c *Client) DescribeClassicLinkInstancesPages(input *ec2.DescribeClassicLin
 	output := &ec2.DescribeClassicLinkInstancesOutput{}
 	fnCacher := func(out *ec2.DescribeClassicLinkInstancesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5543,7 +5543,7 @@ func (c *Client) DescribeClientVpnAuthorizationRulesPages(input *ec2.DescribeCli
 	output := &ec2.DescribeClientVpnAuthorizationRulesOutput{}
 	fnCacher := func(out *ec2.DescribeClientVpnAuthorizationRulesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5594,7 +5594,7 @@ func (c *Client) DescribeClientVpnConnectionsPages(input *ec2.DescribeClientVpnC
 	output := &ec2.DescribeClientVpnConnectionsOutput{}
 	fnCacher := func(out *ec2.DescribeClientVpnConnectionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5645,7 +5645,7 @@ func (c *Client) DescribeClientVpnEndpointsPages(input *ec2.DescribeClientVpnEnd
 	output := &ec2.DescribeClientVpnEndpointsOutput{}
 	fnCacher := func(out *ec2.DescribeClientVpnEndpointsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5696,7 +5696,7 @@ func (c *Client) DescribeClientVpnRoutesPages(input *ec2.DescribeClientVpnRoutes
 	output := &ec2.DescribeClientVpnRoutesOutput{}
 	fnCacher := func(out *ec2.DescribeClientVpnRoutesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5747,7 +5747,7 @@ func (c *Client) DescribeClientVpnTargetNetworksPages(input *ec2.DescribeClientV
 	output := &ec2.DescribeClientVpnTargetNetworksOutput{}
 	fnCacher := func(out *ec2.DescribeClientVpnTargetNetworksOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5798,7 +5798,7 @@ func (c *Client) DescribeCoipPoolsPages(input *ec2.DescribeCoipPoolsInput, fn fu
 	output := &ec2.DescribeCoipPoolsOutput{}
 	fnCacher := func(out *ec2.DescribeCoipPoolsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5897,7 +5897,7 @@ func (c *Client) DescribeDhcpOptionsPages(input *ec2.DescribeDhcpOptionsInput, f
 	output := &ec2.DescribeDhcpOptionsOutput{}
 	fnCacher := func(out *ec2.DescribeDhcpOptionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -5948,7 +5948,7 @@ func (c *Client) DescribeEgressOnlyInternetGatewaysPages(input *ec2.DescribeEgre
 	output := &ec2.DescribeEgressOnlyInternetGatewaysOutput{}
 	fnCacher := func(out *ec2.DescribeEgressOnlyInternetGatewaysOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6023,7 +6023,7 @@ func (c *Client) DescribeExportImageTasksPages(input *ec2.DescribeExportImageTas
 	output := &ec2.DescribeExportImageTasksOutput{}
 	fnCacher := func(out *ec2.DescribeExportImageTasksOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6098,7 +6098,7 @@ func (c *Client) DescribeFastLaunchImagesPages(input *ec2.DescribeFastLaunchImag
 	output := &ec2.DescribeFastLaunchImagesOutput{}
 	fnCacher := func(out *ec2.DescribeFastLaunchImagesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6149,7 +6149,7 @@ func (c *Client) DescribeFastSnapshotRestoresPages(input *ec2.DescribeFastSnapsh
 	output := &ec2.DescribeFastSnapshotRestoresOutput{}
 	fnCacher := func(out *ec2.DescribeFastSnapshotRestoresOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6248,7 +6248,7 @@ func (c *Client) DescribeFleetsPages(input *ec2.DescribeFleetsInput, fn func(*ec
 	output := &ec2.DescribeFleetsOutput{}
 	fnCacher := func(out *ec2.DescribeFleetsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6299,7 +6299,7 @@ func (c *Client) DescribeFlowLogsPages(input *ec2.DescribeFlowLogsInput, fn func
 	output := &ec2.DescribeFlowLogsOutput{}
 	fnCacher := func(out *ec2.DescribeFlowLogsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6374,7 +6374,7 @@ func (c *Client) DescribeFpgaImagesPages(input *ec2.DescribeFpgaImagesInput, fn 
 	output := &ec2.DescribeFpgaImagesOutput{}
 	fnCacher := func(out *ec2.DescribeFpgaImagesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6425,7 +6425,7 @@ func (c *Client) DescribeHostReservationOfferingsPages(input *ec2.DescribeHostRe
 	output := &ec2.DescribeHostReservationOfferingsOutput{}
 	fnCacher := func(out *ec2.DescribeHostReservationOfferingsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6476,7 +6476,7 @@ func (c *Client) DescribeHostReservationsPages(input *ec2.DescribeHostReservatio
 	output := &ec2.DescribeHostReservationsOutput{}
 	fnCacher := func(out *ec2.DescribeHostReservationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6527,7 +6527,7 @@ func (c *Client) DescribeHostsPages(input *ec2.DescribeHostsInput, fn func(*ec2.
 	output := &ec2.DescribeHostsOutput{}
 	fnCacher := func(out *ec2.DescribeHostsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6578,7 +6578,7 @@ func (c *Client) DescribeIamInstanceProfileAssociationsPages(input *ec2.Describe
 	output := &ec2.DescribeIamInstanceProfileAssociationsOutput{}
 	fnCacher := func(out *ec2.DescribeIamInstanceProfileAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6701,7 +6701,7 @@ func (c *Client) DescribeImagesPages(input *ec2.DescribeImagesInput, fn func(*ec
 	output := &ec2.DescribeImagesOutput{}
 	fnCacher := func(out *ec2.DescribeImagesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6752,7 +6752,7 @@ func (c *Client) DescribeImportImageTasksPages(input *ec2.DescribeImportImageTas
 	output := &ec2.DescribeImportImageTasksOutput{}
 	fnCacher := func(out *ec2.DescribeImportImageTasksOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6803,7 +6803,7 @@ func (c *Client) DescribeImportSnapshotTasksPages(input *ec2.DescribeImportSnaps
 	output := &ec2.DescribeImportSnapshotTasksOutput{}
 	fnCacher := func(out *ec2.DescribeImportSnapshotTasksOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6878,7 +6878,7 @@ func (c *Client) DescribeInstanceCreditSpecificationsPages(input *ec2.DescribeIn
 	output := &ec2.DescribeInstanceCreditSpecificationsOutput{}
 	fnCacher := func(out *ec2.DescribeInstanceCreditSpecificationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -6953,7 +6953,7 @@ func (c *Client) DescribeInstanceEventWindowsPages(input *ec2.DescribeInstanceEv
 	output := &ec2.DescribeInstanceEventWindowsOutput{}
 	fnCacher := func(out *ec2.DescribeInstanceEventWindowsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7004,7 +7004,7 @@ func (c *Client) DescribeInstanceStatusPages(input *ec2.DescribeInstanceStatusIn
 	output := &ec2.DescribeInstanceStatusOutput{}
 	fnCacher := func(out *ec2.DescribeInstanceStatusOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7055,7 +7055,7 @@ func (c *Client) DescribeInstanceTypeOfferingsPages(input *ec2.DescribeInstanceT
 	output := &ec2.DescribeInstanceTypeOfferingsOutput{}
 	fnCacher := func(out *ec2.DescribeInstanceTypeOfferingsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7106,7 +7106,7 @@ func (c *Client) DescribeInstanceTypesPages(input *ec2.DescribeInstanceTypesInpu
 	output := &ec2.DescribeInstanceTypesOutput{}
 	fnCacher := func(out *ec2.DescribeInstanceTypesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7157,7 +7157,7 @@ func (c *Client) DescribeInstancesPages(input *ec2.DescribeInstancesInput, fn fu
 	output := &ec2.DescribeInstancesOutput{}
 	fnCacher := func(out *ec2.DescribeInstancesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7208,7 +7208,7 @@ func (c *Client) DescribeInternetGatewaysPages(input *ec2.DescribeInternetGatewa
 	output := &ec2.DescribeInternetGatewaysOutput{}
 	fnCacher := func(out *ec2.DescribeInternetGatewaysOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7259,7 +7259,7 @@ func (c *Client) DescribeIpamPoolsPages(input *ec2.DescribeIpamPoolsInput, fn fu
 	output := &ec2.DescribeIpamPoolsOutput{}
 	fnCacher := func(out *ec2.DescribeIpamPoolsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7310,7 +7310,7 @@ func (c *Client) DescribeIpamScopesPages(input *ec2.DescribeIpamScopesInput, fn 
 	output := &ec2.DescribeIpamScopesOutput{}
 	fnCacher := func(out *ec2.DescribeIpamScopesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7361,7 +7361,7 @@ func (c *Client) DescribeIpamsPages(input *ec2.DescribeIpamsInput, fn func(*ec2.
 	output := &ec2.DescribeIpamsOutput{}
 	fnCacher := func(out *ec2.DescribeIpamsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7412,7 +7412,7 @@ func (c *Client) DescribeIpv6PoolsPages(input *ec2.DescribeIpv6PoolsInput, fn fu
 	output := &ec2.DescribeIpv6PoolsOutput{}
 	fnCacher := func(out *ec2.DescribeIpv6PoolsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7487,7 +7487,7 @@ func (c *Client) DescribeLaunchTemplateVersionsPages(input *ec2.DescribeLaunchTe
 	output := &ec2.DescribeLaunchTemplateVersionsOutput{}
 	fnCacher := func(out *ec2.DescribeLaunchTemplateVersionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7538,7 +7538,7 @@ func (c *Client) DescribeLaunchTemplatesPages(input *ec2.DescribeLaunchTemplates
 	output := &ec2.DescribeLaunchTemplatesOutput{}
 	fnCacher := func(out *ec2.DescribeLaunchTemplatesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7589,7 +7589,7 @@ func (c *Client) DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations
 	output := &ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput{}
 	fnCacher := func(out *ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7640,7 +7640,7 @@ func (c *Client) DescribeLocalGatewayRouteTableVpcAssociationsPages(input *ec2.D
 	output := &ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput{}
 	fnCacher := func(out *ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7691,7 +7691,7 @@ func (c *Client) DescribeLocalGatewayRouteTablesPages(input *ec2.DescribeLocalGa
 	output := &ec2.DescribeLocalGatewayRouteTablesOutput{}
 	fnCacher := func(out *ec2.DescribeLocalGatewayRouteTablesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7742,7 +7742,7 @@ func (c *Client) DescribeLocalGatewayVirtualInterfaceGroupsPages(input *ec2.Desc
 	output := &ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput{}
 	fnCacher := func(out *ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7793,7 +7793,7 @@ func (c *Client) DescribeLocalGatewayVirtualInterfacesPages(input *ec2.DescribeL
 	output := &ec2.DescribeLocalGatewayVirtualInterfacesOutput{}
 	fnCacher := func(out *ec2.DescribeLocalGatewayVirtualInterfacesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7844,7 +7844,7 @@ func (c *Client) DescribeLocalGatewaysPages(input *ec2.DescribeLocalGatewaysInpu
 	output := &ec2.DescribeLocalGatewaysOutput{}
 	fnCacher := func(out *ec2.DescribeLocalGatewaysOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7895,7 +7895,7 @@ func (c *Client) DescribeManagedPrefixListsPages(input *ec2.DescribeManagedPrefi
 	output := &ec2.DescribeManagedPrefixListsOutput{}
 	fnCacher := func(out *ec2.DescribeManagedPrefixListsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7946,7 +7946,7 @@ func (c *Client) DescribeMovingAddressesPages(input *ec2.DescribeMovingAddresses
 	output := &ec2.DescribeMovingAddressesOutput{}
 	fnCacher := func(out *ec2.DescribeMovingAddressesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -7997,7 +7997,7 @@ func (c *Client) DescribeNatGatewaysPages(input *ec2.DescribeNatGatewaysInput, f
 	output := &ec2.DescribeNatGatewaysOutput{}
 	fnCacher := func(out *ec2.DescribeNatGatewaysOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8048,7 +8048,7 @@ func (c *Client) DescribeNetworkAclsPages(input *ec2.DescribeNetworkAclsInput, f
 	output := &ec2.DescribeNetworkAclsOutput{}
 	fnCacher := func(out *ec2.DescribeNetworkAclsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8099,7 +8099,7 @@ func (c *Client) DescribeNetworkInsightsAccessScopeAnalysesPages(input *ec2.Desc
 	output := &ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput{}
 	fnCacher := func(out *ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8150,7 +8150,7 @@ func (c *Client) DescribeNetworkInsightsAccessScopesPages(input *ec2.DescribeNet
 	output := &ec2.DescribeNetworkInsightsAccessScopesOutput{}
 	fnCacher := func(out *ec2.DescribeNetworkInsightsAccessScopesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8201,7 +8201,7 @@ func (c *Client) DescribeNetworkInsightsAnalysesPages(input *ec2.DescribeNetwork
 	output := &ec2.DescribeNetworkInsightsAnalysesOutput{}
 	fnCacher := func(out *ec2.DescribeNetworkInsightsAnalysesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8252,7 +8252,7 @@ func (c *Client) DescribeNetworkInsightsPathsPages(input *ec2.DescribeNetworkIns
 	output := &ec2.DescribeNetworkInsightsPathsOutput{}
 	fnCacher := func(out *ec2.DescribeNetworkInsightsPathsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8327,7 +8327,7 @@ func (c *Client) DescribeNetworkInterfacePermissionsPages(input *ec2.DescribeNet
 	output := &ec2.DescribeNetworkInterfacePermissionsOutput{}
 	fnCacher := func(out *ec2.DescribeNetworkInterfacePermissionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8378,7 +8378,7 @@ func (c *Client) DescribeNetworkInterfacesPages(input *ec2.DescribeNetworkInterf
 	output := &ec2.DescribeNetworkInterfacesOutput{}
 	fnCacher := func(out *ec2.DescribeNetworkInterfacesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8453,7 +8453,7 @@ func (c *Client) DescribePrefixListsPages(input *ec2.DescribePrefixListsInput, f
 	output := &ec2.DescribePrefixListsOutput{}
 	fnCacher := func(out *ec2.DescribePrefixListsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8504,7 +8504,7 @@ func (c *Client) DescribePrincipalIdFormatPages(input *ec2.DescribePrincipalIdFo
 	output := &ec2.DescribePrincipalIdFormatOutput{}
 	fnCacher := func(out *ec2.DescribePrincipalIdFormatOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8555,7 +8555,7 @@ func (c *Client) DescribePublicIpv4PoolsPages(input *ec2.DescribePublicIpv4Pools
 	output := &ec2.DescribePublicIpv4PoolsOutput{}
 	fnCacher := func(out *ec2.DescribePublicIpv4PoolsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8630,7 +8630,7 @@ func (c *Client) DescribeReplaceRootVolumeTasksPages(input *ec2.DescribeReplaceR
 	output := &ec2.DescribeReplaceRootVolumeTasksOutput{}
 	fnCacher := func(out *ec2.DescribeReplaceRootVolumeTasksOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8717,7 +8717,7 @@ func (c *Client) DescribeReservedInstancesModificationsPages(input *ec2.Describe
 	output := &ec2.DescribeReservedInstancesModificationsOutput{}
 	fnCacher := func(out *ec2.DescribeReservedInstancesModificationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8768,7 +8768,7 @@ func (c *Client) DescribeReservedInstancesOfferingsPages(input *ec2.DescribeRese
 	output := &ec2.DescribeReservedInstancesOfferingsOutput{}
 	fnCacher := func(out *ec2.DescribeReservedInstancesOfferingsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8831,7 +8831,7 @@ func (c *Client) DescribeRouteTablesPages(input *ec2.DescribeRouteTablesInput, f
 	output := &ec2.DescribeRouteTablesOutput{}
 	fnCacher := func(out *ec2.DescribeRouteTablesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8882,7 +8882,7 @@ func (c *Client) DescribeScheduledInstanceAvailabilityPages(input *ec2.DescribeS
 	output := &ec2.DescribeScheduledInstanceAvailabilityOutput{}
 	fnCacher := func(out *ec2.DescribeScheduledInstanceAvailabilityOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -8933,7 +8933,7 @@ func (c *Client) DescribeScheduledInstancesPages(input *ec2.DescribeScheduledIns
 	output := &ec2.DescribeScheduledInstancesOutput{}
 	fnCacher := func(out *ec2.DescribeScheduledInstancesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9008,7 +9008,7 @@ func (c *Client) DescribeSecurityGroupRulesPages(input *ec2.DescribeSecurityGrou
 	output := &ec2.DescribeSecurityGroupRulesOutput{}
 	fnCacher := func(out *ec2.DescribeSecurityGroupRulesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9059,7 +9059,7 @@ func (c *Client) DescribeSecurityGroupsPages(input *ec2.DescribeSecurityGroupsIn
 	output := &ec2.DescribeSecurityGroupsOutput{}
 	fnCacher := func(out *ec2.DescribeSecurityGroupsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9134,7 +9134,7 @@ func (c *Client) DescribeSnapshotTierStatusPages(input *ec2.DescribeSnapshotTier
 	output := &ec2.DescribeSnapshotTierStatusOutput{}
 	fnCacher := func(out *ec2.DescribeSnapshotTierStatusOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9185,7 +9185,7 @@ func (c *Client) DescribeSnapshotsPages(input *ec2.DescribeSnapshotsInput, fn fu
 	output := &ec2.DescribeSnapshotsOutput{}
 	fnCacher := func(out *ec2.DescribeSnapshotsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9308,7 +9308,7 @@ func (c *Client) DescribeSpotFleetRequestsPages(input *ec2.DescribeSpotFleetRequ
 	output := &ec2.DescribeSpotFleetRequestsOutput{}
 	fnCacher := func(out *ec2.DescribeSpotFleetRequestsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9359,7 +9359,7 @@ func (c *Client) DescribeSpotInstanceRequestsPages(input *ec2.DescribeSpotInstan
 	output := &ec2.DescribeSpotInstanceRequestsOutput{}
 	fnCacher := func(out *ec2.DescribeSpotInstanceRequestsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9410,7 +9410,7 @@ func (c *Client) DescribeSpotPriceHistoryPages(input *ec2.DescribeSpotPriceHisto
 	output := &ec2.DescribeSpotPriceHistoryOutput{}
 	fnCacher := func(out *ec2.DescribeSpotPriceHistoryOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9461,7 +9461,7 @@ func (c *Client) DescribeStaleSecurityGroupsPages(input *ec2.DescribeStaleSecuri
 	output := &ec2.DescribeStaleSecurityGroupsOutput{}
 	fnCacher := func(out *ec2.DescribeStaleSecurityGroupsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9512,7 +9512,7 @@ func (c *Client) DescribeStoreImageTasksPages(input *ec2.DescribeStoreImageTasks
 	output := &ec2.DescribeStoreImageTasksOutput{}
 	fnCacher := func(out *ec2.DescribeStoreImageTasksOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9563,7 +9563,7 @@ func (c *Client) DescribeSubnetsPages(input *ec2.DescribeSubnetsInput, fn func(*
 	output := &ec2.DescribeSubnetsOutput{}
 	fnCacher := func(out *ec2.DescribeSubnetsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9614,7 +9614,7 @@ func (c *Client) DescribeTagsPages(input *ec2.DescribeTagsInput, fn func(*ec2.De
 	output := &ec2.DescribeTagsOutput{}
 	fnCacher := func(out *ec2.DescribeTagsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9665,7 +9665,7 @@ func (c *Client) DescribeTrafficMirrorFiltersPages(input *ec2.DescribeTrafficMir
 	output := &ec2.DescribeTrafficMirrorFiltersOutput{}
 	fnCacher := func(out *ec2.DescribeTrafficMirrorFiltersOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9716,7 +9716,7 @@ func (c *Client) DescribeTrafficMirrorSessionsPages(input *ec2.DescribeTrafficMi
 	output := &ec2.DescribeTrafficMirrorSessionsOutput{}
 	fnCacher := func(out *ec2.DescribeTrafficMirrorSessionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9767,7 +9767,7 @@ func (c *Client) DescribeTrafficMirrorTargetsPages(input *ec2.DescribeTrafficMir
 	output := &ec2.DescribeTrafficMirrorTargetsOutput{}
 	fnCacher := func(out *ec2.DescribeTrafficMirrorTargetsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9818,7 +9818,7 @@ func (c *Client) DescribeTransitGatewayAttachmentsPages(input *ec2.DescribeTrans
 	output := &ec2.DescribeTransitGatewayAttachmentsOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayAttachmentsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9869,7 +9869,7 @@ func (c *Client) DescribeTransitGatewayConnectPeersPages(input *ec2.DescribeTran
 	output := &ec2.DescribeTransitGatewayConnectPeersOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayConnectPeersOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9920,7 +9920,7 @@ func (c *Client) DescribeTransitGatewayConnectsPages(input *ec2.DescribeTransitG
 	output := &ec2.DescribeTransitGatewayConnectsOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayConnectsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -9971,7 +9971,7 @@ func (c *Client) DescribeTransitGatewayMulticastDomainsPages(input *ec2.Describe
 	output := &ec2.DescribeTransitGatewayMulticastDomainsOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayMulticastDomainsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10022,7 +10022,7 @@ func (c *Client) DescribeTransitGatewayPeeringAttachmentsPages(input *ec2.Descri
 	output := &ec2.DescribeTransitGatewayPeeringAttachmentsOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayPeeringAttachmentsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10073,7 +10073,7 @@ func (c *Client) DescribeTransitGatewayPolicyTablesPages(input *ec2.DescribeTran
 	output := &ec2.DescribeTransitGatewayPolicyTablesOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayPolicyTablesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10124,7 +10124,7 @@ func (c *Client) DescribeTransitGatewayRouteTableAnnouncementsPages(input *ec2.D
 	output := &ec2.DescribeTransitGatewayRouteTableAnnouncementsOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayRouteTableAnnouncementsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10175,7 +10175,7 @@ func (c *Client) DescribeTransitGatewayRouteTablesPages(input *ec2.DescribeTrans
 	output := &ec2.DescribeTransitGatewayRouteTablesOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayRouteTablesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10226,7 +10226,7 @@ func (c *Client) DescribeTransitGatewayVpcAttachmentsPages(input *ec2.DescribeTr
 	output := &ec2.DescribeTransitGatewayVpcAttachmentsOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewayVpcAttachmentsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10277,7 +10277,7 @@ func (c *Client) DescribeTransitGatewaysPages(input *ec2.DescribeTransitGateways
 	output := &ec2.DescribeTransitGatewaysOutput{}
 	fnCacher := func(out *ec2.DescribeTransitGatewaysOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10328,7 +10328,7 @@ func (c *Client) DescribeTrunkInterfaceAssociationsPages(input *ec2.DescribeTrun
 	output := &ec2.DescribeTrunkInterfaceAssociationsOutput{}
 	fnCacher := func(out *ec2.DescribeTrunkInterfaceAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10379,7 +10379,7 @@ func (c *Client) DescribeVerifiedAccessEndpointsPages(input *ec2.DescribeVerifie
 	output := &ec2.DescribeVerifiedAccessEndpointsOutput{}
 	fnCacher := func(out *ec2.DescribeVerifiedAccessEndpointsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10430,7 +10430,7 @@ func (c *Client) DescribeVerifiedAccessGroupsPages(input *ec2.DescribeVerifiedAc
 	output := &ec2.DescribeVerifiedAccessGroupsOutput{}
 	fnCacher := func(out *ec2.DescribeVerifiedAccessGroupsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10481,7 +10481,7 @@ func (c *Client) DescribeVerifiedAccessInstanceLoggingConfigurationsPages(input 
 	output := &ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput{}
 	fnCacher := func(out *ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10532,7 +10532,7 @@ func (c *Client) DescribeVerifiedAccessInstancesPages(input *ec2.DescribeVerifie
 	output := &ec2.DescribeVerifiedAccessInstancesOutput{}
 	fnCacher := func(out *ec2.DescribeVerifiedAccessInstancesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10583,7 +10583,7 @@ func (c *Client) DescribeVerifiedAccessTrustProvidersPages(input *ec2.DescribeVe
 	output := &ec2.DescribeVerifiedAccessTrustProvidersOutput{}
 	fnCacher := func(out *ec2.DescribeVerifiedAccessTrustProvidersOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10658,7 +10658,7 @@ func (c *Client) DescribeVolumeStatusPages(input *ec2.DescribeVolumeStatusInput,
 	output := &ec2.DescribeVolumeStatusOutput{}
 	fnCacher := func(out *ec2.DescribeVolumeStatusOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10721,7 +10721,7 @@ func (c *Client) DescribeVolumesModificationsPages(input *ec2.DescribeVolumesMod
 	output := &ec2.DescribeVolumesModificationsOutput{}
 	fnCacher := func(out *ec2.DescribeVolumesModificationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10760,7 +10760,7 @@ func (c *Client) DescribeVolumesPages(input *ec2.DescribeVolumesInput, fn func(*
 	output := &ec2.DescribeVolumesOutput{}
 	fnCacher := func(out *ec2.DescribeVolumesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10847,7 +10847,7 @@ func (c *Client) DescribeVpcClassicLinkDnsSupportPages(input *ec2.DescribeVpcCla
 	output := &ec2.DescribeVpcClassicLinkDnsSupportOutput{}
 	fnCacher := func(out *ec2.DescribeVpcClassicLinkDnsSupportOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10910,7 +10910,7 @@ func (c *Client) DescribeVpcEndpointConnectionNotificationsPages(input *ec2.Desc
 	output := &ec2.DescribeVpcEndpointConnectionNotificationsOutput{}
 	fnCacher := func(out *ec2.DescribeVpcEndpointConnectionNotificationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -10961,7 +10961,7 @@ func (c *Client) DescribeVpcEndpointConnectionsPages(input *ec2.DescribeVpcEndpo
 	output := &ec2.DescribeVpcEndpointConnectionsOutput{}
 	fnCacher := func(out *ec2.DescribeVpcEndpointConnectionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -11012,7 +11012,7 @@ func (c *Client) DescribeVpcEndpointServiceConfigurationsPages(input *ec2.Descri
 	output := &ec2.DescribeVpcEndpointServiceConfigurationsOutput{}
 	fnCacher := func(out *ec2.DescribeVpcEndpointServiceConfigurationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -11063,7 +11063,7 @@ func (c *Client) DescribeVpcEndpointServicePermissionsPages(input *ec2.DescribeV
 	output := &ec2.DescribeVpcEndpointServicePermissionsOutput{}
 	fnCacher := func(out *ec2.DescribeVpcEndpointServicePermissionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -11138,7 +11138,7 @@ func (c *Client) DescribeVpcEndpointsPages(input *ec2.DescribeVpcEndpointsInput,
 	output := &ec2.DescribeVpcEndpointsOutput{}
 	fnCacher := func(out *ec2.DescribeVpcEndpointsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -11189,7 +11189,7 @@ func (c *Client) DescribeVpcPeeringConnectionsPages(input *ec2.DescribeVpcPeerin
 	output := &ec2.DescribeVpcPeeringConnectionsOutput{}
 	fnCacher := func(out *ec2.DescribeVpcPeeringConnectionsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -11240,7 +11240,7 @@ func (c *Client) DescribeVpcsPages(input *ec2.DescribeVpcsInput, fn func(*ec2.De
 	output := &ec2.DescribeVpcsOutput{}
 	fnCacher := func(out *ec2.DescribeVpcsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -12491,7 +12491,7 @@ func (c *Client) GetAssociatedIpv6PoolCidrsPages(input *ec2.GetAssociatedIpv6Poo
 	output := &ec2.GetAssociatedIpv6PoolCidrsOutput{}
 	fnCacher := func(out *ec2.GetAssociatedIpv6PoolCidrsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -12542,7 +12542,7 @@ func (c *Client) GetAwsNetworkPerformanceDataPages(input *ec2.GetAwsNetworkPerfo
 	output := &ec2.GetAwsNetworkPerformanceDataOutput{}
 	fnCacher := func(out *ec2.GetAwsNetworkPerformanceDataOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -12785,7 +12785,7 @@ func (c *Client) GetGroupsForCapacityReservationPages(input *ec2.GetGroupsForCap
 	output := &ec2.GetGroupsForCapacityReservationOutput{}
 	fnCacher := func(out *ec2.GetGroupsForCapacityReservationOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -12860,7 +12860,7 @@ func (c *Client) GetInstanceTypesFromInstanceRequirementsPages(input *ec2.GetIns
 	output := &ec2.GetInstanceTypesFromInstanceRequirementsOutput{}
 	fnCacher := func(out *ec2.GetInstanceTypesFromInstanceRequirementsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -12935,7 +12935,7 @@ func (c *Client) GetIpamAddressHistoryPages(input *ec2.GetIpamAddressHistoryInpu
 	output := &ec2.GetIpamAddressHistoryOutput{}
 	fnCacher := func(out *ec2.GetIpamAddressHistoryOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -12986,7 +12986,7 @@ func (c *Client) GetIpamPoolAllocationsPages(input *ec2.GetIpamPoolAllocationsIn
 	output := &ec2.GetIpamPoolAllocationsOutput{}
 	fnCacher := func(out *ec2.GetIpamPoolAllocationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13037,7 +13037,7 @@ func (c *Client) GetIpamPoolCidrsPages(input *ec2.GetIpamPoolCidrsInput, fn func
 	output := &ec2.GetIpamPoolCidrsOutput{}
 	fnCacher := func(out *ec2.GetIpamPoolCidrsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13088,7 +13088,7 @@ func (c *Client) GetIpamResourceCidrsPages(input *ec2.GetIpamResourceCidrsInput,
 	output := &ec2.GetIpamResourceCidrsOutput{}
 	fnCacher := func(out *ec2.GetIpamResourceCidrsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13163,7 +13163,7 @@ func (c *Client) GetManagedPrefixListAssociationsPages(input *ec2.GetManagedPref
 	output := &ec2.GetManagedPrefixListAssociationsOutput{}
 	fnCacher := func(out *ec2.GetManagedPrefixListAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13214,7 +13214,7 @@ func (c *Client) GetManagedPrefixListEntriesPages(input *ec2.GetManagedPrefixLis
 	output := &ec2.GetManagedPrefixListEntriesOutput{}
 	fnCacher := func(out *ec2.GetManagedPrefixListEntriesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13385,7 +13385,7 @@ func (c *Client) GetSpotPlacementScoresPages(input *ec2.GetSpotPlacementScoresIn
 	output := &ec2.GetSpotPlacementScoresOutput{}
 	fnCacher := func(out *ec2.GetSpotPlacementScoresOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13460,7 +13460,7 @@ func (c *Client) GetTransitGatewayAttachmentPropagationsPages(input *ec2.GetTran
 	output := &ec2.GetTransitGatewayAttachmentPropagationsOutput{}
 	fnCacher := func(out *ec2.GetTransitGatewayAttachmentPropagationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13511,7 +13511,7 @@ func (c *Client) GetTransitGatewayMulticastDomainAssociationsPages(input *ec2.Ge
 	output := &ec2.GetTransitGatewayMulticastDomainAssociationsOutput{}
 	fnCacher := func(out *ec2.GetTransitGatewayMulticastDomainAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13562,7 +13562,7 @@ func (c *Client) GetTransitGatewayPolicyTableAssociationsPages(input *ec2.GetTra
 	output := &ec2.GetTransitGatewayPolicyTableAssociationsOutput{}
 	fnCacher := func(out *ec2.GetTransitGatewayPolicyTableAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13637,7 +13637,7 @@ func (c *Client) GetTransitGatewayPrefixListReferencesPages(input *ec2.GetTransi
 	output := &ec2.GetTransitGatewayPrefixListReferencesOutput{}
 	fnCacher := func(out *ec2.GetTransitGatewayPrefixListReferencesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13688,7 +13688,7 @@ func (c *Client) GetTransitGatewayRouteTableAssociationsPages(input *ec2.GetTran
 	output := &ec2.GetTransitGatewayRouteTableAssociationsOutput{}
 	fnCacher := func(out *ec2.GetTransitGatewayRouteTableAssociationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13739,7 +13739,7 @@ func (c *Client) GetTransitGatewayRouteTablePropagationsPages(input *ec2.GetTran
 	output := &ec2.GetTransitGatewayRouteTablePropagationsOutput{}
 	fnCacher := func(out *ec2.GetTransitGatewayRouteTablePropagationsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -13862,7 +13862,7 @@ func (c *Client) GetVpnConnectionDeviceTypesPages(input *ec2.GetVpnConnectionDev
 	output := &ec2.GetVpnConnectionDeviceTypesOutput{}
 	fnCacher := func(out *ec2.GetVpnConnectionDeviceTypesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -14057,7 +14057,7 @@ func (c *Client) ListImagesInRecycleBinPages(input *ec2.ListImagesInRecycleBinIn
 	output := &ec2.ListImagesInRecycleBinOutput{}
 	fnCacher := func(out *ec2.ListImagesInRecycleBinOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -14108,7 +14108,7 @@ func (c *Client) ListSnapshotsInRecycleBinPages(input *ec2.ListSnapshotsInRecycl
 	output := &ec2.ListSnapshotsInRecycleBinOutput{}
 	fnCacher := func(out *ec2.ListSnapshotsInRecycleBinOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -16787,7 +16787,7 @@ func (c *Client) SearchLocalGatewayRoutesPages(input *ec2.SearchLocalGatewayRout
 	output := &ec2.SearchLocalGatewayRoutesOutput{}
 	fnCacher := func(out *ec2.SearchLocalGatewayRoutesOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}
@@ -16838,7 +16838,7 @@ func (c *Client) SearchTransitGatewayMulticastGroupsPages(input *ec2.SearchTrans
 	output := &ec2.SearchTransitGatewayMulticastGroupsOutput{}
 	fnCacher := func(out *ec2.SearchTransitGatewayMulticastGroupsOutput, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		}

@@ -48,6 +48,8 @@ type Method struct {
 	Outputs []Arg
 	// Pager indicates the method takes a user supplied paging function
 	Pager bool
+	// Context indicates the method takes a context as the first parameter
+	Context bool
 }
 
 func (m Method) FindInputType() (string, bool) {
@@ -150,7 +152,12 @@ func cachableFuncBody(m Method) string {
 }
 
 func cachablePagerFuncBody(m Method) string {
-	output := m.Inputs[1].ActualType.In(0).String()
+	var output string
+	if m.Context {
+		output = m.Inputs[2].ActualType.In(0).String()
+	} else {
+		output = m.Inputs[1].ActualType.In(0).String()
+	}
 	return fmt.Sprintf(`hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
 	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
 		fn(cachedOutput.(%s), false)
@@ -160,7 +167,7 @@ func cachablePagerFuncBody(m Method) string {
 	output := &%s{}
 	fnCacher := func(out %s, more bool) bool {
 		ret := fn(out, more)
-		if !ret {
+		if !ret && more {
 			cachable = false
 			return false
 		} 
@@ -180,20 +187,20 @@ func cachablePagerFuncBody(m Method) string {
 
 func DescribeMethod(method reflect.Method) Method {
 	m := Method{Name: method.Name}
-	withCtx := false
-	pages := false
 	if strings.HasSuffix(method.Name, "WithContext") {
-		withCtx = true
-	}
-	if strings.HasSuffix(method.Name, "Pages") {
+		m.Context = true
+	} else if strings.HasSuffix(method.Name, "Pages") {
 		m.Pager = true
-		pages = true
+	}
+	if strings.HasSuffix(method.Name, "PagesWithContext") {
+		m.Pager = true
+		m.Context = true
 	}
 
 	for j := 0; j < method.Type.NumIn(); j++ {
-		if withCtx && j == 0 {
+		if m.Context && j == 0 {
 			m.Inputs = append(m.Inputs, Arg{Name: "ctx", Type: method.Type.In(j).String(), Kind: method.Type.In(j).Kind()})
-		} else if pages && j == method.Type.NumIn()-1 {
+		} else if m.Pager && ((!m.Context && j == method.Type.NumIn()-1) || (m.Context && j == method.Type.NumIn()-2)) {
 			m.Inputs = append(m.Inputs, Arg{Name: "fn", Type: method.Type.In(j).String(), Kind: method.Type.In(j).Kind(), ActualType: method.Type.In(j)})
 		} else if method.Type.IsVariadic() && j == method.Type.NumIn()-1 {
 			m.Inputs = append(m.Inputs, Arg{Name: "opts", Type: strings.Replace(method.Type.In(j).String(), "[]", "...", 1), Kind: method.Type.In(j).Kind()})

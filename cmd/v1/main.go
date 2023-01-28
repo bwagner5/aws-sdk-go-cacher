@@ -31,13 +31,36 @@ func main() {
 	}))
 	ec2svc := cacher.NewClient(ec2.New(sess))
 	for i := 0; i < 3; i++ {
-		start := time.Now().UTC()
-		dio := lo.Must(ec2svc.DescribeInstances(&ec2.DescribeInstancesInput{}))
-		duration := time.Since(start)
-		instanceIDs := lo.Flatten(lo.Map(dio.Reservations, func(r *ec2.Reservation, _ int) []string {
-			return lo.Map(r.Instances, func(i *ec2.Instance, _ int) string { return *i.InstanceId })
-		}))
-		fmt.Printf("[%d] Took %s to DescribeInstances\n\n", i, duration)
-		fmt.Println(instanceIDs)
+		describeInstances(i, ec2svc)
+		describeInstancesPages(i, ec2svc)
 	}
+}
+
+func describeInstances(i int, ec2svc *cacher.Client) {
+	start := time.Now().UTC()
+	dio := lo.Must(ec2svc.DescribeInstances(&ec2.DescribeInstancesInput{}))
+	duration := time.Since(start)
+	instanceIDs := lo.Flatten(lo.Map(dio.Reservations, func(r *ec2.Reservation, _ int) []string {
+		return lo.Map(r.Instances, func(i *ec2.Instance, _ int) string { return *i.InstanceId })
+	}))
+	fmt.Printf("[%d] Took %s to DescribeInstances\n\n", i, duration)
+	fmt.Println(instanceIDs)
+}
+
+func describeInstancesPages(i int, ec2svc *cacher.Client) {
+	start := time.Now().UTC()
+	var dios []*ec2.DescribeInstancesOutput
+	lo.Must0(ec2svc.DescribeInstancesPages(&ec2.DescribeInstancesInput{}, func(dio *ec2.DescribeInstancesOutput, b bool) bool {
+		dios = append(dios, dio)
+		return true
+	}))
+	duration := time.Since(start)
+	var instanceIDs []string
+	for _, dio := range dios {
+		instanceIDs = append(instanceIDs, lo.Flatten(lo.Map(dio.Reservations, func(r *ec2.Reservation, _ int) []string {
+			return lo.Map(r.Instances, func(i *ec2.Instance, _ int) string { return *i.InstanceId })
+		}))...)
+	}
+	fmt.Printf("[%d] Took %s to DescribeInstancesPages and received %d pages\n\n", i, duration, len(dios))
+	fmt.Println(instanceIDs)
 }
