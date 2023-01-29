@@ -41,6 +41,7 @@ limitations under the License.
 */`
 
 type Method struct {
+	// Name is the method name
 	Name string
 	// Inputs is a mapping of input name to type
 	Inputs []Arg
@@ -106,22 +107,37 @@ func main() {
 	fmt.Fprintln(src, `import (
 		"context"
 		"strconv"
+		"time"
 
+		"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
 		"github.com/aws/aws-sdk-go/service/ec2"
 		"github.com/aws/aws-sdk-go/aws/request"
 		"github.com/imdario/mergo"
 		"github.com/mitchellh/hashstructure/v2"
+		"github.com/patrickmn/go-cache"
 		)`)
+	fmt.Fprintln(src, `type EC2 struct {
+		ec2iface.EC2API
+		cache  *cache.Cache
+	}
+	
+	func New(ec2api ec2iface.EC2API) *EC2 {
+		return &EC2 {
+			EC2API: ec2api,
+			cache: cache.New(1*time.Minute, 2*time.Minute),
+		}
+	}
+	`)
 
 	t := reflect.TypeOf((*ec2iface.EC2API)(nil)).Elem()
 	for i := 0; i < t.NumMethod(); i++ {
 		method := DescribeMethod(t.Method(i))
 		if _, ok := method.FindOutputType(); ok && !strings.HasSuffix(method.Name, "Request") {
-			fmt.Fprintf(src, "func (c *Client) %s {\n", method.String())
+			fmt.Fprintf(src, "func (c *EC2) %s {\n", method.String())
 			fmt.Fprintln(src, cachableFuncBody(method))
 			fmt.Fprintln(src, "}")
 		} else if method.Pager {
-			fmt.Fprintf(src, "func (c *Client) %s {\n", method.String())
+			fmt.Fprintf(src, "func (c *EC2) %s {\n", method.String())
 			fmt.Fprintln(src, cachablePagerFuncBody(method))
 			fmt.Fprintln(src, "}")
 		}
@@ -134,6 +150,7 @@ func main() {
 	}
 	formatted, err := format.Source(src.Bytes())
 	if err != nil {
+		fmt.Println(src.String())
 		log.Fatalf("formatting generated source, %s", err)
 	}
 
@@ -145,7 +162,7 @@ func cachableFuncBody(m Method) string {
 	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
 		return cachedOutput.(%s), nil
 	}
-	out, err := c.client.%s
+	out, err := c.EC2API.%s
 	if err != nil { return nil, err }
 	c.cache.SetDefault(strconv.FormatUint(hash, 16), out)
 	return out, err`, m.Outputs[0], m.CallString())
@@ -176,7 +193,7 @@ func cachablePagerFuncBody(m Method) string {
 		}
 		return true
 	}
-	if err := c.client.%s; err != nil {
+	if err := c.EC2API.%s; err != nil {
 		return err
 	}
 	if cachable {

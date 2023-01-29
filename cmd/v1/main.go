@@ -20,6 +20,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
 	"github.com/bwagner5/aws-sdk-go-cacher/pkg/cacher"
 	"github.com/samber/lo"
 )
@@ -29,14 +30,14 @@ func main() {
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
 	}))
-	ec2svc := cacher.NewClient(ec2.New(sess))
+	ec2svc := cacher.New(ec2.New(sess))
 	for i := 0; i < 3; i++ {
 		describeInstances(i, ec2svc)
 		describeInstancesPages(i, ec2svc)
 	}
 }
 
-func describeInstances(i int, ec2svc *cacher.Client) {
+func describeInstances(i int, ec2svc ec2iface.EC2API) {
 	start := time.Now().UTC()
 	dio := lo.Must(ec2svc.DescribeInstances(&ec2.DescribeInstancesInput{}))
 	duration := time.Since(start)
@@ -47,7 +48,7 @@ func describeInstances(i int, ec2svc *cacher.Client) {
 	fmt.Println(instanceIDs)
 }
 
-func describeInstancesPages(i int, ec2svc *cacher.Client) {
+func describeInstancesPages(i int, ec2svc ec2iface.EC2API) {
 	start := time.Now().UTC()
 	var dios []*ec2.DescribeInstancesOutput
 	lo.Must0(ec2svc.DescribeInstancesPages(&ec2.DescribeInstancesInput{}, func(dio *ec2.DescribeInstancesOutput, b bool) bool {
