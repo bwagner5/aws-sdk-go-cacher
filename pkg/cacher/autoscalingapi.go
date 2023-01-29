@@ -39,6 +39,54 @@ func NewAutoScaling(autoscalingapi autoscalingiface.AutoScalingAPI) *AutoScaling
 		cache:          cache.New(1*time.Minute, 2*time.Minute),
 	}
 }
+func (c *AutoScaling) BatchDeleteScheduledAction(input *autoscaling.BatchDeleteScheduledActionInput) (*autoscaling.BatchDeleteScheduledActionOutput, error) {
+	hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
+	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
+		return cachedOutput.(*autoscaling.BatchDeleteScheduledActionOutput), nil
+	}
+	out, err := c.AutoScalingAPI.BatchDeleteScheduledAction(input)
+	if err != nil {
+		return nil, err
+	}
+	c.cache.SetDefault(strconv.FormatUint(hash, 16), out)
+	return out, err
+}
+func (c *AutoScaling) BatchDeleteScheduledActionWithContext(ctx context.Context, input *autoscaling.BatchDeleteScheduledActionInput, opts ...request.Option) (*autoscaling.BatchDeleteScheduledActionOutput, error) {
+	hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
+	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
+		return cachedOutput.(*autoscaling.BatchDeleteScheduledActionOutput), nil
+	}
+	out, err := c.AutoScalingAPI.BatchDeleteScheduledActionWithContext(ctx, input, opts...)
+	if err != nil {
+		return nil, err
+	}
+	c.cache.SetDefault(strconv.FormatUint(hash, 16), out)
+	return out, err
+}
+func (c *AutoScaling) BatchPutScheduledUpdateGroupAction(input *autoscaling.BatchPutScheduledUpdateGroupActionInput) (*autoscaling.BatchPutScheduledUpdateGroupActionOutput, error) {
+	hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
+	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
+		return cachedOutput.(*autoscaling.BatchPutScheduledUpdateGroupActionOutput), nil
+	}
+	out, err := c.AutoScalingAPI.BatchPutScheduledUpdateGroupAction(input)
+	if err != nil {
+		return nil, err
+	}
+	c.cache.SetDefault(strconv.FormatUint(hash, 16), out)
+	return out, err
+}
+func (c *AutoScaling) BatchPutScheduledUpdateGroupActionWithContext(ctx context.Context, input *autoscaling.BatchPutScheduledUpdateGroupActionInput, opts ...request.Option) (*autoscaling.BatchPutScheduledUpdateGroupActionOutput, error) {
+	hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
+	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {
+		return cachedOutput.(*autoscaling.BatchPutScheduledUpdateGroupActionOutput), nil
+	}
+	out, err := c.AutoScalingAPI.BatchPutScheduledUpdateGroupActionWithContext(ctx, input, opts...)
+	if err != nil {
+		return nil, err
+	}
+	c.cache.SetDefault(strconv.FormatUint(hash, 16), out)
+	return out, err
+}
 func (c *AutoScaling) DescribeAccountLimits(input *autoscaling.DescribeAccountLimitsInput) (*autoscaling.DescribeAccountLimitsOutput, error) {
 	hash, _ := hashstructure.Hash(input, hashstructure.FormatV2, &hashstructure.HashOptions{SlicesAsSets: true})
 	if cachedOutput, ok := c.cache.Get(strconv.FormatUint(hash, 16)); ok {

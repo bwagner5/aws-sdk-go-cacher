@@ -16,18 +16,12 @@ package main
 
 import (
 	"bytes"
-	"flag"
 	"fmt"
 	"go/format"
 	"log"
-	"os"
 	"reflect"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/service/autoscaling/autoscalingiface"
-	"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
-	"github.com/aws/aws-sdk-go/service/s3/s3iface"
-	"github.com/aws/aws-sdk-go/service/ssm/ssmiface"
 	"github.com/samber/lo"
 )
 
@@ -114,39 +108,13 @@ func (a Arg) String() string {
 	return fmt.Sprintf("%s %s", a.Name, a.Type)
 }
 
-func main() {
-	outputDir := flag.String("out-dir", "pkg/cacher", "directory to output generated caching clients")
-	out, err := GenSDK[ec2iface.EC2API]()
-	if err != nil {
-		log.Printf("%s: %v\n", "ec2api.go", err)
-	}
-	os.WriteFile(fmt.Sprintf("%s/ec2api.go", *outputDir), []byte(out), 0644)
-
-	out, err = GenSDK[s3iface.S3API]()
-	if err != nil {
-		log.Printf("%s: %v\n", "s3api.go", err)
-	}
-	os.WriteFile(fmt.Sprintf("%s/s3api.go", *outputDir), []byte(out), 0644)
-
-	out, err = GenSDK[ssmiface.SSMAPI]()
-	if err != nil {
-		log.Printf("%s: %v\n", "ssmapi.go", err)
-	}
-	os.WriteFile(fmt.Sprintf("%s/ssmapi.go", *outputDir), []byte(out), 0644)
-
-	out, err = GenSDK[autoscalingiface.AutoScalingAPI]()
-	if err != nil {
-		log.Printf("%s: %v\n", "autoscalingapi.go", err)
-	}
-	os.WriteFile(fmt.Sprintf("%s/autoscalingapi.go", *outputDir), []byte(out), 0644)
-}
-
 func GenSDK[T any]() (string, error) {
 	t := reflect.TypeOf((*T)(nil)).Elem()
 	sdk := SDK{
-		Name:           t.Name(),
-		ShortName:      strings.ReplaceAll(t.Name(), "API", ""),
-		ShortNameLower: strings.ToLower(strings.ReplaceAll(t.Name(), "API", "")),
+		Name: t.Name(),
+		// TODO: fix sdks with API in the name like apigateway :)
+		ShortName:      reverse(strings.Replace(reverse(t.Name()), reverse("API"), "", 1)),
+		ShortNameLower: reverse(strings.ToLower(strings.ReplaceAll(reverse(t.Name()), reverse("API"), ""))),
 	}
 	src := &bytes.Buffer{}
 	fmt.Fprintln(src, header)
@@ -178,8 +146,13 @@ func GenSDK[T any]() (string, error) {
 		}
 	}
 	`, sdk.ShortName, sdk.ShortNameLower, sdk.ShortNameLower, sdk.Name, sdk.ShortName, sdk.ShortName, sdk.Name, sdk.ShortNameLower)
+	anyPages := false
+	methodsGenerated := 0
 	for i := 0; i < t.NumMethod(); i++ {
 		method := DescribeMethod(sdk, t.Method(i))
+		if method.Pager {
+			anyPages = true
+		}
 		if !method.ReadOnly {
 			continue
 		} else if strings.HasSuffix(method.Name, "Request") {
@@ -188,18 +161,26 @@ func GenSDK[T any]() (string, error) {
 			fmt.Fprintf(src, "func (c *%s) %s {\n", sdk.ShortName, method.String())
 			fmt.Fprintln(src, cachableFuncBody(sdk, method))
 			fmt.Fprintln(src, "}")
+			methodsGenerated++
 		} else if method.Pager {
 			fmt.Fprintf(src, "func (c *%s) %s {\n", sdk.ShortName, method.String())
 			fmt.Fprintln(src, cachablePagerFuncBody(sdk, method))
 			fmt.Fprintln(src, "}")
+			methodsGenerated++
 		}
 
 		// TODO: write function body that
 		// 1. Provide a registration mechanism to keep an input query up-to-date by running go routines
 	}
+	if methodsGenerated == 0 {
+		return "", nil
+	}
 	formatted, err := format.Source(src.Bytes())
 	if err != nil {
 		return src.String(), fmt.Errorf("formatting generated source, %w", err)
+	}
+	if !anyPages {
+		return strings.ReplaceAll(string(formatted), `"github.com/imdario/mergo"`, ""), nil
 	}
 	return string(formatted), nil
 }
@@ -261,7 +242,8 @@ func DescribeMethod(sdk SDK, method reflect.Method) Method {
 		m.Context = true
 	}
 	if strings.HasPrefix(method.Name, "Get") || strings.HasPrefix(method.Name, "List") || strings.HasPrefix(method.Name, "Describe") ||
-		strings.HasPrefix(method.Name, "Search") {
+		strings.HasPrefix(method.Name, "Search") || strings.HasPrefix(method.Name, "Batch") || strings.HasPrefix(method.Name, "Query") ||
+		strings.HasPrefix(method.Name, "View") || strings.HasPrefix(method.Name, "Scan") {
 		m.ReadOnly = true
 	}
 	if !m.ReadOnly && m.Pager {
@@ -284,4 +266,17 @@ func DescribeMethod(sdk SDK, method reflect.Method) Method {
 		m.Outputs = append(m.Outputs, Arg{Type: method.Type.Out(j).String(), Kind: method.Type.Out(j).Kind()})
 	}
 	return m
+}
+
+func reverse(s string) string {
+	rns := []rune(s) // convert to rune
+	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
+
+		// swap the letters of the string,
+		// like first with last and so on.
+		rns[i], rns[j] = rns[j], rns[i]
+	}
+
+	// return the reversed string.
+	return string(rns)
 }
