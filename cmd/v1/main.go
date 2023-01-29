@@ -30,7 +30,7 @@ func main() {
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
 	}))
-	ec2svc := cacher.New(ec2.New(sess))
+	ec2svc := cacher.NewEC2(ec2.New(sess))
 	for i := 0; i < 3; i++ {
 		describeInstances(i, ec2svc)
 		describeInstancesPages(i, ec2svc)
