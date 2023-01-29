@@ -21,7 +21,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/aws/aws-sdk-go/service/ec2/ec2iface"
-	"github.com/bwagner5/aws-sdk-go-cacher/pkg/cacher"
+	"github.com/bwagner5/aws-sdk-go-cacher/pkg/ec2cacher"
 	"github.com/samber/lo"
 )
 
@@ -30,10 +30,11 @@ func main() {
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
 	}))
-	ec2svc := cacher.NewEC2(ec2.New(sess))
+	ec2client := ec2.New(sess)
+	ec2CachingClient := ec2cacher.New(ec2client)
 	for i := 0; i < 3; i++ {
-		describeInstances(i, ec2svc)
-		describeInstancesPages(i, ec2svc)
+		describeInstances(i, ec2CachingClient)
+		describeInstancesPages(i, ec2CachingClient)
 	}
 }
 

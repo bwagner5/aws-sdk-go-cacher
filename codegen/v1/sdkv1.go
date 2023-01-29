@@ -113,12 +113,12 @@ func GenSDK[T any]() (string, error) {
 	sdk := SDK{
 		Name: t.Name(),
 		// TODO: fix sdks with API in the name like apigateway :)
-		ShortName:      reverse(strings.Replace(reverse(t.Name()), reverse("API"), "", 1)),
-		ShortNameLower: reverse(strings.ToLower(strings.ReplaceAll(reverse(t.Name()), reverse("API"), ""))),
+		ShortName:      ReplaceLast(t.Name(), "API", ""),
+		ShortNameLower: strings.ToLower(ReplaceLast(t.Name(), "API", "")),
 	}
 	src := &bytes.Buffer{}
 	fmt.Fprintln(src, header)
-	fmt.Fprintln(src, "package cacher")
+	fmt.Fprintf(src, "package %s\n", fmt.Sprintf("%scacher", sdk.ShortNameLower))
 	fmt.Fprintln(src, "// DO NOT EDIT")
 	fmt.Fprintln(src, "// THIS FILE IS AUTO GENERATED")
 	fmt.Fprintf(src, `import (
@@ -132,20 +132,23 @@ func GenSDK[T any]() (string, error) {
 		"github.com/imdario/mergo"
 		"github.com/mitchellh/hashstructure/v2"
 		"github.com/patrickmn/go-cache"
-		)
 		`, sdk.ShortNameLower, sdk.ShortNameLower, sdk.ShortNameLower)
+	if sdk.ShortNameLower == "wafregional" {
+		fmt.Fprintln(src, `"github.com/aws/aws-sdk-go/service/waf"`)
+	}
+	fmt.Fprintln(src, ")")
 	fmt.Fprintf(src, `type %s struct {
 		%siface.%s
 		cache  *cache.Cache
 	}
 	`, sdk.ShortName, sdk.ShortNameLower, sdk.Name)
-	fmt.Fprintf(src, `func New%s(%sapi %siface.%s) *%s {
+	fmt.Fprintf(src, `func New(%sapi %siface.%s) *%s {
 		return &%s {
 			%s: %sapi,
 			cache: cache.New(1*time.Minute, 2*time.Minute),
 		}
 	}
-	`, sdk.ShortName, sdk.ShortNameLower, sdk.ShortNameLower, sdk.Name, sdk.ShortName, sdk.ShortName, sdk.Name, sdk.ShortNameLower)
+	`, sdk.ShortNameLower, sdk.ShortNameLower, sdk.Name, sdk.ShortName, sdk.ShortName, sdk.Name, sdk.ShortNameLower)
 	anyPages := false
 	methodsGenerated := 0
 	for i := 0; i < t.NumMethod(); i++ {
@@ -266,6 +269,10 @@ func DescribeMethod(sdk SDK, method reflect.Method) Method {
 		m.Outputs = append(m.Outputs, Arg{Type: method.Type.Out(j).String(), Kind: method.Type.Out(j).Kind()})
 	}
 	return m
+}
+
+func ReplaceLast(str string, old string, replacement string) string {
+	return reverse(strings.Replace(reverse(str), reverse(old), reverse(replacement), 1))
 }
 
 func reverse(s string) string {

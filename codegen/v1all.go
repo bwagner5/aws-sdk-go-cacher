@@ -62,10 +62,11 @@ func main() {
 		"flag"
         "fmt"
         "os"
+        "errors"
         `)
 	services := getServices()
 	for _, service := range services {
-		serviceShort := reverse(strings.ToLower(strings.Replace(reverse(strings.Split(service, ".")[1]), "IPA", "", 1)))
+		serviceShort := strings.ToLower(ReplaceLast(strings.Split(service, ".")[1], "API", ""))
 		serviceIfaceShort := strings.ToLower(strings.Split(service, ".")[0])
 		fmt.Fprintf(src, `"github.com/aws/aws-sdk-go/service/%s/%s"
         `, serviceShort, serviceIfaceShort)
@@ -73,22 +74,31 @@ func main() {
 	fmt.Fprintln(src, ")")
 	fmt.Fprintln(src, "func main() {")
 	fmt.Fprintln(src, `
-    outputDir := flag.String("out-dir", "pkg/cacher", "directory to output generated caching clients")
+    outputDir := flag.String("out-dir", "pkg", "directory to output generated caching clients")
     flag.Parse()
     `)
-	fmt.Fprintln(src, "var out string")
-	fmt.Fprintln(src, "var err error")
+	fmt.Fprintln(src, `var serviceOutDir string
+    var err error
+    var out string`)
+
 	for _, service := range services {
-		serviceShort := reverse(strings.ToLower(strings.Replace(reverse(strings.Split(service, ".")[1]), "IPA", "", 1)))
+		serviceShort := strings.ToLower(ReplaceLast(strings.Split(service, ".")[1], "API", ""))
 		fmt.Fprintf(src, `out, err = GenSDK[%s]()
         if err != nil {
             log.Printf("%%s: %%v\n", "%s.go", err)
         }
+        serviceOutDir = fmt.Sprintf("%%s/%scacher", *outputDir)
         if out != "" {
-            os.WriteFile(fmt.Sprintf("%%s/%s.go", *outputDir), []byte(out), 0644)
+            if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+                err := os.Mkdir(serviceOutDir, os.ModePerm)
+                if err != nil {
+                    log.Fatal(err)
+                }
+            }
+            os.WriteFile(fmt.Sprintf("%%s/%s.go", serviceOutDir), []byte(out), 0644)
         }
         `,
-			service, fmt.Sprintf("%sapi", serviceShort), fmt.Sprintf("%sapi", serviceShort))
+			service, fmt.Sprintf("%sapi", serviceShort), serviceShort, fmt.Sprintf("%scacher", serviceShort))
 	}
 	fmt.Fprintln(src, "}")
 	formatted, err := format.Source(src.Bytes())
@@ -147,6 +157,10 @@ func getServices() []string {
 		}
 	}
 	return services
+}
+
+func ReplaceLast(str string, old string, replacement string) string {
+	return reverse(strings.Replace(reverse(str), reverse(old), reverse(replacement), 1))
 }
 
 func reverse(s string) string {

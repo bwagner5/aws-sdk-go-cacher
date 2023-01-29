@@ -16,6 +16,7 @@ package main
 // DO NOT EDIT
 // THIS FILE IS AUTO GENERATED
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"log"
@@ -363,2375 +364,4742 @@ import (
 
 func main() {
 
-	outputDir := flag.String("out-dir", "pkg/cacher", "directory to output generated caching clients")
+	outputDir := flag.String("out-dir", "pkg", "directory to output generated caching clients")
 	flag.Parse()
 
-	var out string
+	var serviceOutDir string
 	var err error
+	var out string
 	out, err = GenSDK[accessanalyzeriface.AccessAnalyzerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "accessanalyzerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/accessanalyzercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/accessanalyzerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/accessanalyzercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[accountiface.AccountAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "accountapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/accountcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/accountapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/accountcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[acmiface.ACMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "acmapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/acmcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/acmapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/acmcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[acmpcaiface.ACMPCAAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "acmpcaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/acmpcacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/acmpcaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/acmpcacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[alexaforbusinessiface.AlexaForBusinessAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "alexaforbusinessapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/alexaforbusinesscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/alexaforbusinessapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/alexaforbusinesscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[amplifyiface.AmplifyAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "amplifyapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/amplifycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/amplifyapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/amplifycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[amplifybackendiface.AmplifyBackendAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "amplifybackendapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/amplifybackendcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/amplifybackendapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/amplifybackendcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[amplifyuibuilderiface.AmplifyUIBuilderAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "amplifyuibuilderapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/amplifyuibuildercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/amplifyuibuilderapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/amplifyuibuildercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[apigatewayiface.APIGatewayAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "apigatewayapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/apigatewaycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/apigatewayapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/apigatewaycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[apigatewaymanagementapiiface.ApiGatewayManagementApiAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "apigatewaymanagementapiapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/apigatewaymanagementapicacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/apigatewaymanagementapiapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/apigatewaymanagementapicacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[apigatewayv2iface.ApiGatewayV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "apigatewayv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/apigatewayv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/apigatewayv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/apigatewayv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appconfigiface.AppConfigAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appconfigapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appconfigcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appconfigapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appconfigcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appconfigdataiface.AppConfigDataAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appconfigdataapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appconfigdatacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appconfigdataapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appconfigdatacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appflowiface.AppflowAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appflowapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appflowcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appflowapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appflowcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appintegrationsserviceiface.AppIntegrationsServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appintegrationsserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appintegrationsservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appintegrationsserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appintegrationsservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[applicationautoscalingiface.ApplicationAutoScalingAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "applicationautoscalingapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/applicationautoscalingcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/applicationautoscalingapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/applicationautoscalingcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[applicationcostprofileriface.ApplicationCostProfilerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "applicationcostprofilerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/applicationcostprofilercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/applicationcostprofilerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/applicationcostprofilercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[applicationdiscoveryserviceiface.ApplicationDiscoveryServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "applicationdiscoveryserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/applicationdiscoveryservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/applicationdiscoveryserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/applicationdiscoveryservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[applicationinsightsiface.ApplicationInsightsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "applicationinsightsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/applicationinsightscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/applicationinsightsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/applicationinsightscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appmeshiface.AppMeshAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appmeshapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appmeshcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appmeshapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appmeshcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appregistryiface.AppRegistryAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appregistryapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appregistrycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appregistryapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appregistrycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[apprunneriface.AppRunnerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "apprunnerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/apprunnercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/apprunnerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/apprunnercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appstreamiface.AppStreamAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appstreamapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appstreamcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appstreamapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appstreamcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[appsynciface.AppSyncAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "appsyncapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/appsynccacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/appsyncapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/appsynccacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[arczonalshiftiface.ARCZonalShiftAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "arczonalshiftapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/arczonalshiftcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/arczonalshiftapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/arczonalshiftcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[athenaiface.AthenaAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "athenaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/athenacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/athenaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/athenacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[auditmanageriface.AuditManagerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "auditmanagerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/auditmanagercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/auditmanagerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/auditmanagercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[augmentedairuntimeiface.AugmentedAIRuntimeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "augmentedairuntimeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/augmentedairuntimecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/augmentedairuntimeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/augmentedairuntimecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[autoscalingiface.AutoScalingAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "autoscalingapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/autoscalingcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/autoscalingapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/autoscalingcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[autoscalingplansiface.AutoScalingPlansAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "autoscalingplansapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/autoscalingplanscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/autoscalingplansapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/autoscalingplanscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[backupiface.BackupAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "backupapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/backupcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/backupapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/backupcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[backupgatewayiface.BackupGatewayAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "backupgatewayapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/backupgatewaycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/backupgatewayapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/backupgatewaycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[backupstorageiface.BackupStorageAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "backupstorageapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/backupstoragecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/backupstorageapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/backupstoragecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[batchiface.BatchAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "batchapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/batchcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/batchapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/batchcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[billingconductoriface.BillingConductorAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "billingconductorapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/billingconductorcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/billingconductorapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/billingconductorcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[braketiface.BraketAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "braketapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/braketcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/braketapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/braketcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[budgetsiface.BudgetsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "budgetsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/budgetscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/budgetsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/budgetscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[chimeiface.ChimeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "chimeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/chimecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/chimeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/chimecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[chimesdkidentityiface.ChimeSDKIdentityAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "chimesdkidentityapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/chimesdkidentitycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/chimesdkidentityapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/chimesdkidentitycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[chimesdkmediapipelinesiface.ChimeSDKMediaPipelinesAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "chimesdkmediapipelinesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/chimesdkmediapipelinescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/chimesdkmediapipelinesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/chimesdkmediapipelinescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[chimesdkmeetingsiface.ChimeSDKMeetingsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "chimesdkmeetingsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/chimesdkmeetingscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/chimesdkmeetingsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/chimesdkmeetingscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[chimesdkmessagingiface.ChimeSDKMessagingAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "chimesdkmessagingapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/chimesdkmessagingcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/chimesdkmessagingapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/chimesdkmessagingcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[chimesdkvoiceiface.ChimeSDKVoiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "chimesdkvoiceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/chimesdkvoicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/chimesdkvoiceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/chimesdkvoicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cleanroomsiface.CleanRoomsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cleanroomsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cleanroomscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cleanroomsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cleanroomscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloud9iface.Cloud9API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloud9api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloud9cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloud9api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloud9cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudcontrolapiiface.CloudControlApiAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudcontrolapiapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudcontrolapicacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudcontrolapiapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudcontrolapicacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[clouddirectoryiface.CloudDirectoryAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "clouddirectoryapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/clouddirectorycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/clouddirectoryapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/clouddirectorycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudformationiface.CloudFormationAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudformationapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudformationcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudformationapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudformationcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudfrontiface.CloudFrontAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudfrontapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudfrontcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudfrontapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudfrontcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudhsmiface.CloudHSMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudhsmapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudhsmcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudhsmapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudhsmcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudhsmv2iface.CloudHSMV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudhsmv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudhsmv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudhsmv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudhsmv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudsearchiface.CloudSearchAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudsearchapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudsearchcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudsearchapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudsearchcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudsearchdomainiface.CloudSearchDomainAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudsearchdomainapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudsearchdomaincacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudsearchdomainapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudsearchdomaincacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudtrailiface.CloudTrailAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudtrailapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudtrailcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudtrailapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudtrailcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudwatchiface.CloudWatchAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudwatchapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudwatchcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudwatchapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudwatchcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudwatcheventsiface.CloudWatchEventsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudwatcheventsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudwatcheventscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudwatcheventsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudwatcheventscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudwatchevidentlyiface.CloudWatchEvidentlyAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudwatchevidentlyapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudwatchevidentlycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudwatchevidentlyapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudwatchevidentlycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudwatchlogsiface.CloudWatchLogsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudwatchlogsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudwatchlogscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudwatchlogsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudwatchlogscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cloudwatchrumiface.CloudWatchRUMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cloudwatchrumapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cloudwatchrumcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cloudwatchrumapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cloudwatchrumcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codeartifactiface.CodeArtifactAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codeartifactapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codeartifactcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codeartifactapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codeartifactcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codebuildiface.CodeBuildAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codebuildapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codebuildcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codebuildapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codebuildcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codecommitiface.CodeCommitAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codecommitapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codecommitcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codecommitapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codecommitcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codedeployiface.CodeDeployAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codedeployapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codedeploycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codedeployapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codedeploycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codeguruprofileriface.CodeGuruProfilerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codeguruprofilerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codeguruprofilercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codeguruprofilerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codeguruprofilercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codegururevieweriface.CodeGuruReviewerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codegurureviewerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codegurureviewercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codegurureviewerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codegurureviewercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codepipelineiface.CodePipelineAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codepipelineapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codepipelinecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codepipelineapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codepipelinecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codestariface.CodeStarAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codestarapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codestarcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codestarapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codestarcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codestarconnectionsiface.CodeStarConnectionsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codestarconnectionsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codestarconnectionscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codestarconnectionsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codestarconnectionscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[codestarnotificationsiface.CodeStarNotificationsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "codestarnotificationsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/codestarnotificationscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/codestarnotificationsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/codestarnotificationscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cognitoidentityiface.CognitoIdentityAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cognitoidentityapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cognitoidentitycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cognitoidentityapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cognitoidentitycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cognitoidentityprovideriface.CognitoIdentityProviderAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cognitoidentityproviderapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cognitoidentityprovidercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cognitoidentityproviderapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cognitoidentityprovidercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[cognitosynciface.CognitoSyncAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "cognitosyncapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/cognitosynccacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/cognitosyncapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/cognitosynccacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[comprehendiface.ComprehendAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "comprehendapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/comprehendcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/comprehendapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/comprehendcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[comprehendmedicaliface.ComprehendMedicalAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "comprehendmedicalapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/comprehendmedicalcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/comprehendmedicalapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/comprehendmedicalcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[computeoptimizeriface.ComputeOptimizerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "computeoptimizerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/computeoptimizercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/computeoptimizerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/computeoptimizercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[configserviceiface.ConfigServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "configserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/configservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/configserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/configservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[connectiface.ConnectAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "connectapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/connectcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/connectapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/connectcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[connectcampaignsiface.ConnectCampaignsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "connectcampaignsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/connectcampaignscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/connectcampaignsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/connectcampaignscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[connectcasesiface.ConnectCasesAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "connectcasesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/connectcasescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/connectcasesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/connectcasescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[connectcontactlensiface.ConnectContactLensAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "connectcontactlensapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/connectcontactlenscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/connectcontactlensapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/connectcontactlenscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[connectparticipantiface.ConnectParticipantAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "connectparticipantapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/connectparticipantcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/connectparticipantapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/connectparticipantcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[connectwisdomserviceiface.ConnectWisdomServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "connectwisdomserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/connectwisdomservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/connectwisdomserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/connectwisdomservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[controltoweriface.ControlTowerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "controltowerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/controltowercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/controltowerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/controltowercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[costandusagereportserviceiface.CostandUsageReportServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "costandusagereportserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/costandusagereportservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/costandusagereportserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/costandusagereportservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[costexploreriface.CostExplorerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "costexplorerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/costexplorercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/costexplorerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/costexplorercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[customerprofilesiface.CustomerProfilesAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "customerprofilesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/customerprofilescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/customerprofilesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/customerprofilescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[databasemigrationserviceiface.DatabaseMigrationServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "databasemigrationserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/databasemigrationservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/databasemigrationserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/databasemigrationservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[dataexchangeiface.DataExchangeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "dataexchangeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/dataexchangecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/dataexchangeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/dataexchangecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[datapipelineiface.DataPipelineAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "datapipelineapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/datapipelinecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/datapipelineapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/datapipelinecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[datasynciface.DataSyncAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "datasyncapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/datasynccacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/datasyncapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/datasynccacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[daxiface.DAXAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "daxapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/daxcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/daxapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/daxcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[detectiveiface.DetectiveAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "detectiveapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/detectivecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/detectiveapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/detectivecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[devicefarmiface.DeviceFarmAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "devicefarmapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/devicefarmcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/devicefarmapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/devicefarmcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[devopsguruiface.DevOpsGuruAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "devopsguruapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/devopsgurucacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/devopsguruapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/devopsgurucacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[directconnectiface.DirectConnectAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "directconnectapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/directconnectcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/directconnectapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/directconnectcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[directoryserviceiface.DirectoryServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "directoryserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/directoryservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/directoryserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/directoryservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[dlmiface.DLMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "dlmapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/dlmcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/dlmapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/dlmcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[docdbiface.DocDBAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "docdbapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/docdbcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/docdbapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/docdbcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[docdbelasticiface.DocDBElasticAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "docdbelasticapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/docdbelasticcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/docdbelasticapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/docdbelasticcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[drsiface.DrsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "drsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/drscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/drsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/drscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[dynamodbiface.DynamoDBAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "dynamodbapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/dynamodbcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/dynamodbapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/dynamodbcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[dynamodbstreamsiface.DynamoDBStreamsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "dynamodbstreamsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/dynamodbstreamscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/dynamodbstreamsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/dynamodbstreamscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ebsiface.EBSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ebsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ebscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ebsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ebscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ec2iface.EC2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ec2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ec2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ec2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ec2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ec2instanceconnectiface.EC2InstanceConnectAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ec2instanceconnectapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ec2instanceconnectcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ec2instanceconnectapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ec2instanceconnectcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ecriface.ECRAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ecrapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ecrcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ecrapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ecrcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ecrpubliciface.ECRPublicAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ecrpublicapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ecrpubliccacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ecrpublicapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ecrpubliccacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ecsiface.ECSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ecsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ecscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ecsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ecscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[efsiface.EFSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "efsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/efscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/efsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/efscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[eksiface.EKSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "eksapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ekscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/eksapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ekscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[elasticacheiface.ElastiCacheAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "elasticacheapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/elasticachecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/elasticacheapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/elasticachecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[elasticbeanstalkiface.ElasticBeanstalkAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "elasticbeanstalkapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/elasticbeanstalkcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/elasticbeanstalkapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/elasticbeanstalkcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[elasticinferenceiface.ElasticInferenceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "elasticinferenceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/elasticinferencecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/elasticinferenceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/elasticinferencecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[elasticsearchserviceiface.ElasticsearchServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "elasticsearchserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/elasticsearchservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/elasticsearchserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/elasticsearchservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[elastictranscoderiface.ElasticTranscoderAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "elastictranscoderapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/elastictranscodercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/elastictranscoderapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/elastictranscodercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[elbiface.ELBAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "elbapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/elbcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/elbapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/elbcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[elbv2iface.ELBV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "elbv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/elbv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/elbv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/elbv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[emriface.EMRAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "emrapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/emrcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/emrapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/emrcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[emrcontainersiface.EMRContainersAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "emrcontainersapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/emrcontainerscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/emrcontainersapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/emrcontainerscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[emrserverlessiface.EMRServerlessAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "emrserverlessapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/emrserverlesscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/emrserverlessapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/emrserverlesscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[eventbridgeiface.EventBridgeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "eventbridgeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/eventbridgecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/eventbridgeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/eventbridgecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[finspaceiface.FinspaceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "finspaceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/finspacecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/finspaceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/finspacecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[finspacedataiface.FinSpaceDataAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "finspacedataapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/finspacedatacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/finspacedataapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/finspacedatacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[firehoseiface.FirehoseAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "firehoseapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/firehosecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/firehoseapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/firehosecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[fisiface.FISAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "fisapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/fiscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/fisapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/fiscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[fmsiface.FMSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "fmsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/fmscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/fmsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/fmscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[forecastqueryserviceiface.ForecastQueryServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "forecastqueryserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/forecastqueryservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/forecastqueryserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/forecastqueryservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[forecastserviceiface.ForecastServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "forecastserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/forecastservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/forecastserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/forecastservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[frauddetectoriface.FraudDetectorAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "frauddetectorapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/frauddetectorcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/frauddetectorapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/frauddetectorcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[fsxiface.FSxAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "fsxapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/fsxcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/fsxapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/fsxcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[gameliftiface.GameLiftAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "gameliftapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/gameliftcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/gameliftapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/gameliftcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[gamesparksiface.GameSparksAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "gamesparksapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/gamesparkscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/gamesparksapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/gamesparkscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[glacieriface.GlacierAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "glacierapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/glaciercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/glacierapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/glaciercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[globalacceleratoriface.GlobalAcceleratorAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "globalacceleratorapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/globalacceleratorcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/globalacceleratorapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/globalacceleratorcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[glueiface.GlueAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "glueapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/gluecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/glueapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/gluecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[gluedatabrewiface.GlueDataBrewAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "gluedatabrewapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/gluedatabrewcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/gluedatabrewapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/gluedatabrewcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[greengrassiface.GreengrassAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "greengrassapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/greengrasscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/greengrassapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/greengrasscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[greengrassv2iface.GreengrassV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "greengrassv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/greengrassv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/greengrassv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/greengrassv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[groundstationiface.GroundStationAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "groundstationapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/groundstationcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/groundstationapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/groundstationcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[guarddutyiface.GuardDutyAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "guarddutyapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/guarddutycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/guarddutyapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/guarddutycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[healthiface.HealthAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "healthapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/healthcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/healthapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/healthcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[healthlakeiface.HealthLakeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "healthlakeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/healthlakecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/healthlakeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/healthlakecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[honeycodeiface.HoneycodeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "honeycodeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/honeycodecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/honeycodeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/honeycodecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iamiface.IAMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iamapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iamcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iamapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iamcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[identitystoreiface.IdentityStoreAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "identitystoreapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/identitystorecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/identitystoreapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/identitystorecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[imagebuilderiface.ImagebuilderAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "imagebuilderapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/imagebuildercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/imagebuilderapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/imagebuildercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[inspectoriface.InspectorAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "inspectorapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/inspectorcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/inspectorapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/inspectorcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[inspector2iface.Inspector2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "inspector2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/inspector2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/inspector2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/inspector2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotiface.IoTAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iot1clickdevicesserviceiface.IoT1ClickDevicesServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iot1clickdevicesserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iot1clickdevicesservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iot1clickdevicesserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iot1clickdevicesservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iot1clickprojectsiface.IoT1ClickProjectsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iot1clickprojectsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iot1clickprojectscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iot1clickprojectsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iot1clickprojectscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotanalyticsiface.IoTAnalyticsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotanalyticsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotanalyticscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotanalyticsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotanalyticscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotdataplaneiface.IoTDataPlaneAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotdataplaneapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotdataplanecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotdataplaneapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotdataplanecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotdeviceadvisoriface.IoTDeviceAdvisorAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotdeviceadvisorapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotdeviceadvisorcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotdeviceadvisorapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotdeviceadvisorcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ioteventsiface.IoTEventsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ioteventsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ioteventscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ioteventsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ioteventscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ioteventsdataiface.IoTEventsDataAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ioteventsdataapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ioteventsdatacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ioteventsdataapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ioteventsdatacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotfleethubiface.IoTFleetHubAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotfleethubapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotfleethubcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotfleethubapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotfleethubcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotfleetwiseiface.IoTFleetWiseAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotfleetwiseapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotfleetwisecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotfleetwiseapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotfleetwisecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotjobsdataplaneiface.IoTJobsDataPlaneAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotjobsdataplaneapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotjobsdataplanecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotjobsdataplaneapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotjobsdataplanecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotroborunneriface.IoTRoboRunnerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotroborunnerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotroborunnercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotroborunnerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotroborunnercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotsecuretunnelingiface.IoTSecureTunnelingAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotsecuretunnelingapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotsecuretunnelingcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotsecuretunnelingapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotsecuretunnelingcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotsitewiseiface.IoTSiteWiseAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotsitewiseapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotsitewisecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotsitewiseapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotsitewisecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotthingsgraphiface.IoTThingsGraphAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotthingsgraphapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotthingsgraphcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotthingsgraphapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotthingsgraphcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iottwinmakeriface.IoTTwinMakerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iottwinmakerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iottwinmakercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iottwinmakerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iottwinmakercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[iotwirelessiface.IoTWirelessAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "iotwirelessapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/iotwirelesscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/iotwirelessapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/iotwirelesscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ivsiface.IVSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ivsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ivscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ivsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ivscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ivschatiface.IvschatAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ivschatapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ivschatcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ivschatapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ivschatcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kafkaiface.KafkaAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kafkaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kafkacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kafkaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kafkacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kafkaconnectiface.KafkaConnectAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kafkaconnectapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kafkaconnectcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kafkaconnectapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kafkaconnectcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kendraiface.KendraAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kendraapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kendracacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kendraapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kendracacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kendrarankingiface.KendraRankingAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kendrarankingapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kendrarankingcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kendrarankingapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kendrarankingcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[keyspacesiface.KeyspacesAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "keyspacesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/keyspacescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/keyspacesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/keyspacescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisiface.KinesisAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesiscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesiscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisanalyticsiface.KinesisAnalyticsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisanalyticsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesisanalyticscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisanalyticsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesisanalyticscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisanalyticsv2iface.KinesisAnalyticsV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisanalyticsv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesisanalyticsv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisanalyticsv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesisanalyticsv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisvideoiface.KinesisVideoAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisvideoapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesisvideocacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisvideoapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesisvideocacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisvideoarchivedmediaiface.KinesisVideoArchivedMediaAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisvideoarchivedmediaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesisvideoarchivedmediacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisvideoarchivedmediaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesisvideoarchivedmediacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisvideomediaiface.KinesisVideoMediaAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisvideomediaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesisvideomediacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisvideomediaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesisvideomediacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisvideosignalingchannelsiface.KinesisVideoSignalingChannelsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisvideosignalingchannelsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesisvideosignalingchannelscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisvideosignalingchannelsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesisvideosignalingchannelscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kinesisvideowebrtcstorageiface.KinesisVideoWebRTCStorageAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kinesisvideowebrtcstorageapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kinesisvideowebrtcstoragecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kinesisvideowebrtcstorageapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kinesisvideowebrtcstoragecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[kmsiface.KMSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "kmsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/kmscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/kmsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/kmscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lakeformationiface.LakeFormationAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lakeformationapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lakeformationcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lakeformationapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lakeformationcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lambdaiface.LambdaAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lambdaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lambdacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lambdaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lambdacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lexmodelbuildingserviceiface.LexModelBuildingServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lexmodelbuildingserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lexmodelbuildingservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lexmodelbuildingserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lexmodelbuildingservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lexmodelsv2iface.LexModelsV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lexmodelsv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lexmodelsv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lexmodelsv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lexmodelsv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lexruntimeserviceiface.LexRuntimeServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lexruntimeserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lexruntimeservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lexruntimeserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lexruntimeservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lexruntimev2iface.LexRuntimeV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lexruntimev2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lexruntimev2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lexruntimev2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lexruntimev2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[licensemanageriface.LicenseManagerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "licensemanagerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/licensemanagercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/licensemanagerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/licensemanagercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[licensemanagerlinuxsubscriptionsiface.LicenseManagerLinuxSubscriptionsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "licensemanagerlinuxsubscriptionsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/licensemanagerlinuxsubscriptionscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/licensemanagerlinuxsubscriptionsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/licensemanagerlinuxsubscriptionscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[licensemanagerusersubscriptionsiface.LicenseManagerUserSubscriptionsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "licensemanagerusersubscriptionsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/licensemanagerusersubscriptionscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/licensemanagerusersubscriptionsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/licensemanagerusersubscriptionscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lightsailiface.LightsailAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lightsailapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lightsailcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lightsailapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lightsailcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[locationserviceiface.LocationServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "locationserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/locationservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/locationserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/locationservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lookoutequipmentiface.LookoutEquipmentAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lookoutequipmentapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lookoutequipmentcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lookoutequipmentapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lookoutequipmentcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lookoutforvisioniface.LookoutForVisionAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lookoutforvisionapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lookoutforvisioncacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lookoutforvisionapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lookoutforvisioncacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[lookoutmetricsiface.LookoutMetricsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "lookoutmetricsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/lookoutmetricscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/lookoutmetricsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/lookoutmetricscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[m2iface.M2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "m2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/m2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/m2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/m2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[machinelearningiface.MachineLearningAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "machinelearningapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/machinelearningcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/machinelearningapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/machinelearningcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[macieiface.MacieAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "macieapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/maciecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/macieapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/maciecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[macie2iface.Macie2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "macie2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/macie2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/macie2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/macie2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[managedblockchainiface.ManagedBlockchainAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "managedblockchainapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/managedblockchaincacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/managedblockchainapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/managedblockchaincacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[managedgrafanaiface.ManagedGrafanaAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "managedgrafanaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/managedgrafanacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/managedgrafanaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/managedgrafanacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[marketplacecatalogiface.MarketplaceCatalogAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "marketplacecatalogapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/marketplacecatalogcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/marketplacecatalogapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/marketplacecatalogcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[marketplacecommerceanalyticsiface.MarketplaceCommerceAnalyticsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "marketplacecommerceanalyticsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/marketplacecommerceanalyticscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/marketplacecommerceanalyticsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/marketplacecommerceanalyticscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[marketplaceentitlementserviceiface.MarketplaceEntitlementServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "marketplaceentitlementserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/marketplaceentitlementservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/marketplaceentitlementserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/marketplaceentitlementservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[marketplacemeteringiface.MarketplaceMeteringAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "marketplacemeteringapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/marketplacemeteringcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/marketplacemeteringapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/marketplacemeteringcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mediaconnectiface.MediaConnectAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mediaconnectapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mediaconnectcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mediaconnectapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mediaconnectcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mediaconvertiface.MediaConvertAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mediaconvertapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mediaconvertcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mediaconvertapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mediaconvertcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[medialiveiface.MediaLiveAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "medialiveapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/medialivecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/medialiveapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/medialivecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mediapackageiface.MediaPackageAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mediapackageapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mediapackagecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mediapackageapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mediapackagecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mediapackagevodiface.MediaPackageVodAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mediapackagevodapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mediapackagevodcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mediapackagevodapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mediapackagevodcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mediastoreiface.MediaStoreAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mediastoreapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mediastorecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mediastoreapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mediastorecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mediastoredataiface.MediaStoreDataAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mediastoredataapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mediastoredatacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mediastoredataapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mediastoredatacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mediatailoriface.MediaTailorAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mediatailorapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mediatailorcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mediatailorapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mediatailorcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[memorydbiface.MemoryDBAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "memorydbapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/memorydbcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/memorydbapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/memorydbcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mgniface.MgnAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mgnapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mgncacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mgnapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mgncacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[migrationhubiface.MigrationHubAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "migrationhubapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/migrationhubcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/migrationhubapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/migrationhubcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[migrationhubconfigiface.MigrationHubConfigAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "migrationhubconfigapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/migrationhubconfigcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/migrationhubconfigapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/migrationhubconfigcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[migrationhuborchestratoriface.MigrationHubOrchestratorAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "migrationhuborchestratorapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/migrationhuborchestratorcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/migrationhuborchestratorapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/migrationhuborchestratorcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[migrationhubrefactorspacesiface.MigrationHubRefactorSpacesAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "migrationhubrefactorspacesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/migrationhubrefactorspacescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/migrationhubrefactorspacesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/migrationhubrefactorspacescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[migrationhubstrategyrecommendationsiface.MigrationHubStrategyRecommendationsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "migrationhubstrategyrecommendationsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/migrationhubstrategyrecommendationscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/migrationhubstrategyrecommendationsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/migrationhubstrategyrecommendationscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mobileiface.MobileAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mobileapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mobilecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mobileapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mobilecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mobileanalyticsiface.MobileAnalyticsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mobileanalyticsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mobileanalyticscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mobileanalyticsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mobileanalyticscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mqiface.MQAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mqapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mqcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mqapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mqcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mturkiface.MTurkAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mturkapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mturkcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mturkapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mturkcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[mwaaiface.MWAAAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "mwaaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/mwaacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/mwaaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/mwaacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[neptuneiface.NeptuneAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "neptuneapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/neptunecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/neptuneapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/neptunecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[networkfirewalliface.NetworkFirewallAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "networkfirewallapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/networkfirewallcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/networkfirewallapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/networkfirewallcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[networkmanageriface.NetworkManagerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "networkmanagerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/networkmanagercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/networkmanagerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/networkmanagercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[nimblestudioiface.NimbleStudioAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "nimblestudioapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/nimblestudiocacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/nimblestudioapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/nimblestudiocacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[oamiface.OAMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "oamapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/oamcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/oamapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/oamcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[omicsiface.OmicsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "omicsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/omicscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/omicsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/omicscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[opensearchserverlessiface.OpenSearchServerlessAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "opensearchserverlessapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/opensearchserverlesscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/opensearchserverlessapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/opensearchserverlesscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[opensearchserviceiface.OpenSearchServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "opensearchserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/opensearchservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/opensearchserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/opensearchservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[opsworksiface.OpsWorksAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "opsworksapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/opsworkscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/opsworksapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/opsworkscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[opsworkscmiface.OpsWorksCMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "opsworkscmapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/opsworkscmcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/opsworkscmapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/opsworkscmcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[organizationsiface.OrganizationsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "organizationsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/organizationscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/organizationsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/organizationscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[outpostsiface.OutpostsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "outpostsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/outpostscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/outpostsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/outpostscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[panoramaiface.PanoramaAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "panoramaapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/panoramacacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/panoramaapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/panoramacacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[personalizeiface.PersonalizeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "personalizeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/personalizecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/personalizeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/personalizecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[personalizeeventsiface.PersonalizeEventsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "personalizeeventsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/personalizeeventscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/personalizeeventsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/personalizeeventscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[personalizeruntimeiface.PersonalizeRuntimeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "personalizeruntimeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/personalizeruntimecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/personalizeruntimeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/personalizeruntimecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[piiface.PIAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "piapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/picacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/piapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/picacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[pinpointiface.PinpointAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "pinpointapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/pinpointcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/pinpointapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/pinpointcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[pinpointemailiface.PinpointEmailAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "pinpointemailapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/pinpointemailcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/pinpointemailapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/pinpointemailcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[pinpointsmsvoiceiface.PinpointSMSVoiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "pinpointsmsvoiceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/pinpointsmsvoicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/pinpointsmsvoiceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/pinpointsmsvoicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[pinpointsmsvoicev2iface.PinpointSMSVoiceV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "pinpointsmsvoicev2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/pinpointsmsvoicev2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/pinpointsmsvoicev2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/pinpointsmsvoicev2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[pipesiface.PipesAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "pipesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/pipescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/pipesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/pipescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[pollyiface.PollyAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "pollyapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/pollycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/pollyapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/pollycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[pricingiface.PricingAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "pricingapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/pricingcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/pricingapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/pricingcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[privatenetworksiface.PrivateNetworksAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "privatenetworksapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/privatenetworkscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/privatenetworksapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/privatenetworkscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[prometheusserviceiface.PrometheusServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "prometheusserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/prometheusservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/prometheusserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/prometheusservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[protoniface.ProtonAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "protonapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/protoncacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/protonapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/protoncacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[qldbiface.QLDBAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "qldbapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/qldbcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/qldbapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/qldbcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[qldbsessioniface.QLDBSessionAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "qldbsessionapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/qldbsessioncacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/qldbsessionapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/qldbsessioncacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[quicksightiface.QuickSightAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "quicksightapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/quicksightcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/quicksightapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/quicksightcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ramiface.RAMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ramapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ramcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ramapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ramcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[rdsiface.RDSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "rdsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/rdscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/rdsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/rdscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[rdsdataserviceiface.RDSDataServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "rdsdataserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/rdsdataservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/rdsdataserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/rdsdataservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[recyclebiniface.RecycleBinAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "recyclebinapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/recyclebincacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/recyclebinapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/recyclebincacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[redshiftiface.RedshiftAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "redshiftapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/redshiftcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/redshiftapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/redshiftcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[redshiftdataapiserviceiface.RedshiftDataAPIServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "redshiftdataapiserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/redshiftdataapiservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/redshiftdataapiserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/redshiftdataapiservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[redshiftserverlessiface.RedshiftServerlessAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "redshiftserverlessapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/redshiftserverlesscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/redshiftserverlessapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/redshiftserverlesscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[rekognitioniface.RekognitionAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "rekognitionapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/rekognitioncacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/rekognitionapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/rekognitioncacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[resiliencehubiface.ResilienceHubAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "resiliencehubapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/resiliencehubcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/resiliencehubapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/resiliencehubcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[resourceexplorer2iface.ResourceExplorer2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "resourceexplorer2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/resourceexplorer2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/resourceexplorer2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/resourceexplorer2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[resourcegroupsiface.ResourceGroupsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "resourcegroupsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/resourcegroupscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/resourcegroupsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/resourcegroupscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[resourcegroupstaggingapiiface.ResourceGroupsTaggingAPIAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "resourcegroupstaggingapiapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/resourcegroupstaggingapicacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/resourcegroupstaggingapiapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/resourcegroupstaggingapicacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[robomakeriface.RoboMakerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "robomakerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/robomakercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/robomakerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/robomakercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[rolesanywhereiface.RolesAnywhereAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "rolesanywhereapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/rolesanywherecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/rolesanywhereapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/rolesanywherecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[route53iface.Route53API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "route53api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/route53cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/route53api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/route53cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[route53domainsiface.Route53DomainsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "route53domainsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/route53domainscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/route53domainsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/route53domainscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[route53recoveryclusteriface.Route53RecoveryClusterAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "route53recoveryclusterapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/route53recoveryclustercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/route53recoveryclusterapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/route53recoveryclustercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[route53recoverycontrolconfigiface.Route53RecoveryControlConfigAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "route53recoverycontrolconfigapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/route53recoverycontrolconfigcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/route53recoverycontrolconfigapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/route53recoverycontrolconfigcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[route53recoveryreadinessiface.Route53RecoveryReadinessAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "route53recoveryreadinessapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/route53recoveryreadinesscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/route53recoveryreadinessapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/route53recoveryreadinesscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[route53resolveriface.Route53ResolverAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "route53resolverapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/route53resolvercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/route53resolverapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/route53resolvercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[s3iface.S3API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "s3api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/s3cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/s3api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/s3cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[s3controliface.S3ControlAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "s3controlapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/s3controlcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/s3controlapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/s3controlcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[s3outpostsiface.S3OutpostsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "s3outpostsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/s3outpostscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/s3outpostsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/s3outpostscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sagemakeriface.SageMakerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sagemakerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sagemakercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sagemakerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sagemakercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sagemakeredgemanageriface.SagemakerEdgeManagerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sagemakeredgemanagerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sagemakeredgemanagercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sagemakeredgemanagerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sagemakeredgemanagercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sagemakerfeaturestoreruntimeiface.SageMakerFeatureStoreRuntimeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sagemakerfeaturestoreruntimeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sagemakerfeaturestoreruntimecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sagemakerfeaturestoreruntimeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sagemakerfeaturestoreruntimecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sagemakergeospatialiface.SageMakerGeospatialAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sagemakergeospatialapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sagemakergeospatialcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sagemakergeospatialapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sagemakergeospatialcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sagemakermetricsiface.SageMakerMetricsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sagemakermetricsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sagemakermetricscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sagemakermetricsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sagemakermetricscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sagemakerruntimeiface.SageMakerRuntimeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sagemakerruntimeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sagemakerruntimecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sagemakerruntimeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sagemakerruntimecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[savingsplansiface.SavingsPlansAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "savingsplansapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/savingsplanscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/savingsplansapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/savingsplanscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[scheduleriface.SchedulerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "schedulerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/schedulercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/schedulerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/schedulercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[schemasiface.SchemasAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "schemasapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/schemascacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/schemasapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/schemascacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[secretsmanageriface.SecretsManagerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "secretsmanagerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/secretsmanagercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/secretsmanagerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/secretsmanagercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[securityhubiface.SecurityHubAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "securityhubapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/securityhubcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/securityhubapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/securityhubcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[securitylakeiface.SecurityLakeAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "securitylakeapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/securitylakecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/securitylakeapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/securitylakecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[serverlessapplicationrepositoryiface.ServerlessApplicationRepositoryAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "serverlessapplicationrepositoryapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/serverlessapplicationrepositorycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/serverlessapplicationrepositoryapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/serverlessapplicationrepositorycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[servicecatalogiface.ServiceCatalogAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "servicecatalogapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/servicecatalogcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/servicecatalogapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/servicecatalogcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[servicediscoveryiface.ServiceDiscoveryAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "servicediscoveryapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/servicediscoverycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/servicediscoveryapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/servicediscoverycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[servicequotasiface.ServiceQuotasAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "servicequotasapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/servicequotascacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/servicequotasapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/servicequotascacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sesiface.SESAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sesv2iface.SESV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sesv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sesv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sesv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sesv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sfniface.SFNAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sfnapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sfncacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sfnapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sfncacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[shieldiface.ShieldAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "shieldapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/shieldcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/shieldapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/shieldcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[signeriface.SignerAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "signerapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/signercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/signerapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/signercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[simpledbiface.SimpleDBAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "simpledbapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/simpledbcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/simpledbapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/simpledbcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[simspaceweaveriface.SimSpaceWeaverAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "simspaceweaverapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/simspaceweavercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/simspaceweaverapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/simspaceweavercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[smsiface.SMSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "smsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/smscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/smsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/smscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[snowballiface.SnowballAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "snowballapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/snowballcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/snowballapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/snowballcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[snowdevicemanagementiface.SnowDeviceManagementAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "snowdevicemanagementapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/snowdevicemanagementcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/snowdevicemanagementapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/snowdevicemanagementcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[snsiface.SNSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "snsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/snscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/snsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/snscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[sqsiface.SQSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "sqsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/sqscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/sqsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/sqscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ssmiface.SSMAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ssmapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ssmcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ssmapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ssmcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ssmcontactsiface.SSMContactsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ssmcontactsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ssmcontactscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ssmcontactsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ssmcontactscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ssmincidentsiface.SSMIncidentsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ssmincidentsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ssmincidentscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ssmincidentsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ssmincidentscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ssmsapiface.SsmSapAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ssmsapapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ssmsapcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ssmsapapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ssmsapcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ssoiface.SSOAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ssoapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ssocacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ssoapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ssocacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ssoadminiface.SSOAdminAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ssoadminapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ssoadmincacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ssoadminapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ssoadmincacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[ssooidciface.SSOOIDCAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "ssooidcapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/ssooidccacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/ssooidcapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/ssooidccacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[storagegatewayiface.StorageGatewayAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "storagegatewayapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/storagegatewaycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/storagegatewayapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/storagegatewaycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[stsiface.STSAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "stsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/stscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/stsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/stscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[supportiface.SupportAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "supportapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/supportcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/supportapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/supportcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[supportappiface.SupportAppAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "supportappapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/supportappcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/supportappapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/supportappcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[swfiface.SWFAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "swfapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/swfcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/swfapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/swfcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[syntheticsiface.SyntheticsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "syntheticsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/syntheticscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/syntheticsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/syntheticscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[textractiface.TextractAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "textractapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/textractcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/textractapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/textractcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[timestreamqueryiface.TimestreamQueryAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "timestreamqueryapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/timestreamquerycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/timestreamqueryapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/timestreamquerycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[timestreamwriteiface.TimestreamWriteAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "timestreamwriteapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/timestreamwritecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/timestreamwriteapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/timestreamwritecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[transcribeserviceiface.TranscribeServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "transcribeserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/transcribeservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/transcribeserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/transcribeservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[transcribestreamingserviceiface.TranscribeStreamingServiceAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "transcribestreamingserviceapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/transcribestreamingservicecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/transcribestreamingserviceapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/transcribestreamingservicecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[transferiface.TransferAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "transferapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/transfercacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/transferapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/transfercacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[translateiface.TranslateAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "translateapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/translatecacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/translateapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/translatecacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[voiceidiface.VoiceIDAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "voiceidapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/voiceidcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/voiceidapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/voiceidcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[wafiface.WAFAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "wafapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/wafcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/wafapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/wafcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[wafregionaliface.WAFRegionalAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "wafregionalapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/wafregionalcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/wafregionalapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/wafregionalcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[wafv2iface.WAFV2API]()
 	if err != nil {
 		log.Printf("%s: %v\n", "wafv2api.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/wafv2cacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/wafv2api.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/wafv2cacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[wellarchitectediface.WellArchitectedAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "wellarchitectedapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/wellarchitectedcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/wellarchitectedapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/wellarchitectedcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[workdocsiface.WorkDocsAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "workdocsapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/workdocscacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/workdocsapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/workdocscacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[worklinkiface.WorkLinkAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "worklinkapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/worklinkcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/worklinkapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/worklinkcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[workmailiface.WorkMailAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "workmailapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/workmailcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/workmailapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/workmailcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[workmailmessageflowiface.WorkMailMessageFlowAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "workmailmessageflowapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/workmailmessageflowcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/workmailmessageflowapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/workmailmessageflowcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[workspacesiface.WorkSpacesAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "workspacesapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/workspacescacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/workspacesapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/workspacescacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[workspaceswebiface.WorkSpacesWebAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "workspaceswebapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/workspaceswebcacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/workspaceswebapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/workspaceswebcacher.go", serviceOutDir), []byte(out), 0644)
 	}
 	out, err = GenSDK[xrayiface.XRayAPI]()
 	if err != nil {
 		log.Printf("%s: %v\n", "xrayapi.go", err)
 	}
+	serviceOutDir = fmt.Sprintf("%s/xraycacher", *outputDir)
 	if out != "" {
-		os.WriteFile(fmt.Sprintf("%s/xrayapi.go", *outputDir), []byte(out), 0644)
+		if _, err := os.Stat(serviceOutDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(serviceOutDir, os.ModePerm)
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		os.WriteFile(fmt.Sprintf("%s/xraycacher.go", serviceOutDir), []byte(out), 0644)
 	}
 }
